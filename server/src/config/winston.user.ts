@@ -1,10 +1,10 @@
-import { path } from 'app-root-path'
-import { Logger, LoggerInstance, LoggerOptions, transports } from 'winston'
+import { path } from "app-root-path"
+import { Logger, LoggerInstance, LoggerOptions, transports } from "winston"
 
 const options: LoggerOptions = {
   error: {
-    name: 'error-file',
-    level: 'error',
+    name: "error-file",
+    level: "error",
     filename: `${path}/logs/error.log`,
     handleExceptions: true,
     json: true,
@@ -13,8 +13,8 @@ const options: LoggerOptions = {
     colorize: true
   },
   info: {
-    name: 'info-file',
-    level: 'info',
+    name: "info-file",
+    level: "info",
     filename: `${path}/logs/info.log`,
     handleExceptions: true,
     json: true,
@@ -23,7 +23,7 @@ const options: LoggerOptions = {
     colorize: true
   },
   console: {
-    level: 'debug',
+    level: "debug",
     handleExceptions: true,
     json: false,
     colorize: true,

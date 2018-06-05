@@ -1,15 +1,36 @@
-import * as Koa from 'koa'
-import * as bodyParser from 'koa-bodyparser'
-import * as Router from 'koa-router'
-import env from './config/env.config'
+import "reflect-metadata"
+import * as Koa from "koa"
+import * as bodyParser from "koa-bodyparser"
+import * as Router from "koa-router"
+import { createConnection, Connection, QueryFailedError } from "typeorm"
+import { Server } from "net"
 
-const app: Koa = new Koa()
+import { UserRoutes } from "./services/api/users/routes"
+import env from "./config/env.config"
+import logger from "./config/winston.user"
 
-app.use(async (ctx: Koa.Context) => {
-    ctx.body = 'YouHire!'
-})
+const runServer = (): Server => {
+  const app: Koa = new Koa()
+  const router = new Router()
+  UserRoutes.forEach((route) => router[route.method](route.path, route.action))
+  app.use(bodyParser())
+  app.use(router.routes())
+  app.use(router.allowedMethods())
+  return app.listen(env.PORT, (): void => {
+    logger.info(`HTTP Server listening on port: ${env.PORT}`)
+    logger.info(`Environment: ${env.NODE_ENV}`)
+  })
+}
 
-app.listen(env.PORT, (): void => {
-  console.log(`HTTP Server listening on port: ${env.PORT}`)
-  console.log(`Environment: ${env.NODE_ENV}`)
-})
+const runApplication = async (): Promise<Server | QueryFailedError> => {
+  return createConnection().then(async (connection: Connection) => runServer())
+    .catch((err: QueryFailedError) => {
+      logger.error(`TypeORM error ${err}`)
+      return err
+    }
+  )
+}
+
+runApplication()
+
+export default runServer

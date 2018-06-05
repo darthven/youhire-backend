@@ -3,8 +3,9 @@
     "outDir": "dist",
     "module": "commonjs",
     "target": "esnext",
-    "allowJs": true,
     "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "lib": [
       "es7",
       "es2016",
