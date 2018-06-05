@@ -158,3 +158,5 @@
 {"level":"info","message":"Environment: development","timestamp":"2018-06-05T16:40:16.971Z"}
 {"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-05T16:40:44.594Z"}
 {"level":"info","message":"Environment: development","timestamp":"2018-06-05T16:40:44.597Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-05T16:46:17.843Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-05T16:46:17.845Z"}

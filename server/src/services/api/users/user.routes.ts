@@ -1,4 +1,4 @@
-import { getUserById, saveUser } from "./UserController";
+import { getUserById, saveUser } from "./user.controller";
 
 export const UserRoutes = [
     {

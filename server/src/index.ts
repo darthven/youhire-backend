@@ -5,7 +5,7 @@ import * as Router from "koa-router"
 import { createConnection, Connection, QueryFailedError } from "typeorm"
 import { Server } from "net"
 
-import { UserRoutes } from "./services/api/users/routes"
+import { UserRoutes } from "./services/api/users/user.routes"
 import env from "./config/env.config"
 import logger from "./config/winston.user"
 
