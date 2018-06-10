@@ -160,3 +160,127 @@
 {"level":"info","message":"Environment: development","timestamp":"2018-06-05T16:40:44.597Z"}
 {"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-05T16:46:17.843Z"}
 {"level":"info","message":"Environment: development","timestamp":"2018-06-05T16:46:17.845Z"}
+{"date":"Sun Jun 10 2018 15:54:26 GMT+0300 (EEST)","process":{"pid":2766,"uid":501,"gid":20,"cwd":"/Users/developer/Documents/AppShopProjects/youhire-backend/server","execPath":"/usr/local/Cellar/node/10.3.0/bin/node","version":"v10.3.0","argv":["node","/Users/developer/Documents/AppShopProjects/youhire-backend/server/src/index.ts"],"memoryUsage":{"rss":161341440,"heapTotal":130187264,"heapUsed":107617984,"external":1055048}},"os":{"loadavg":[1.41259765625,1.5654296875,1.869140625],"uptime":275394},"trace":[{"column":27,"file":"/Users/developer/Documents/AppShopProjects/youhire-backend/server/src/driver/express/ExpressDriver.ts","function":"ExpressDriver.loadExpress","line":424,"method":"loadExpress","native":false},{"column":14,"file":"/Users/developer/Documents/AppShopProjects/youhire-backend/server/src/driver/express/ExpressDriver.ts","function":"new ExpressDriver","line":30,"method":null,"native":false},{"column":20,"file":"/Users/developer/Documents/AppShopProjects/youhire-backend/server/src/index.ts","function":"Object.createExpressServer","line":122,"method":"createExpressServer","native":false},{"column":13,"file":"/Users/developer/Documents/AppShopProjects/youhire-backend/server/src/index.ts","function":null,"line":14,"method":null,"native":false},{"column":30,"file":"internal/modules/cjs/loader.js","function":"Module._compile","line":702,"method":"_compile","native":false},{"column":23,"file":"/Users/developer/Documents/AppShopProjects/youhire-backend/server/node_modules/ts-node/src/index.ts","function":"Module.m._compile","line":430,"method":"_compile","native":false},{"column":10,"file":"internal/modules/cjs/loader.js","function":"Module._extensions..js","line":713,"method":".js","native":false},{"column":12,"file":"/Users/developer/Documents/AppShopProjects/youhire-backend/server/node_modules/ts-node/src/index.ts","function":"Object.require.extensions.(anonymous function) [as .ts]","line":433,"method":"ts]","native":false},{"column":32,"file":"internal/modules/cjs/loader.js","function":"Module.load","line":612,"method":"load","native":false},{"column":12,"file":"internal/modules/cjs/loader.js","function":"tryModuleLoad","line":551,"method":null,"native":false}],"stack":["Error: express package was not found installed. Try to install it: npm install express --save","    at ExpressDriver.loadExpress (/Users/developer/Documents/AppShopProjects/youhire-backend/server/src/driver/express/ExpressDriver.ts:424:27)","    at new ExpressDriver (/Users/developer/Documents/AppShopProjects/youhire-backend/server/src/driver/express/ExpressDriver.ts:30:14)","    at Object.createExpressServer (/Users/developer/Documents/AppShopProjects/youhire-backend/server/src/index.ts:122:20)","    at Object.<anonymous> (/Users/developer/Documents/AppShopProjects/youhire-backend/server/src/index.ts:14:13)","    at Module._compile (internal/modules/cjs/loader.js:702:30)","    at Module.m._compile (/Users/developer/Documents/AppShopProjects/youhire-backend/server/node_modules/ts-node/src/index.ts:430:23)","    at Module._extensions..js (internal/modules/cjs/loader.js:713:10)","    at Object.require.extensions.(anonymous function) [as .ts] (/Users/developer/Documents/AppShopProjects/youhire-backend/server/node_modules/ts-node/src/index.ts:433:12)","    at Module.load (internal/modules/cjs/loader.js:612:32)","    at tryModuleLoad (internal/modules/cjs/loader.js:551:12)"],"level":"error","message":"uncaughtException: express package was not found installed. Try to install it: npm install express --save","timestamp":"2018-06-10T12:54:26.667Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T12:54:55.158Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T12:54:55.160Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T13:32:44.853Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T13:32:44.855Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T13:52:32.909Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T13:52:32.911Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T14:08:26.104Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T14:08:26.106Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T14:10:14.678Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T14:10:14.680Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T14:12:56.310Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T14:12:56.311Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T14:13:34.457Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T14:13:34.458Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T14:41:00.727Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T14:41:00.728Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T14:44:28.630Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T14:44:28.631Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T14:44:58.126Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T14:44:58.129Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T14:49:30.228Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T14:49:30.230Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T14:49:56.425Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T14:49:56.426Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T14:52:12.002Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T14:52:12.003Z"}
+{"level":"info","message":"Table 'users' was cleared","timestamp":"2018-06-10T14:52:14.788Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T14:53:04.530Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T14:53:04.531Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T14:59:04.294Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T14:59:04.295Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T15:02:24.430Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T15:02:24.432Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T15:06:49.302Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T15:06:49.304Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T15:10:39.457Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T15:10:39.459Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T15:14:28.787Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T15:14:28.789Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T15:16:03.844Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T15:16:03.854Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T15:21:29.712Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T15:21:29.714Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T16:27:27.730Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T16:27:27.732Z"}
+{"level":"info","message":"Table \"users\" was cleared","timestamp":"2018-06-10T16:27:35.863Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T16:46:52.663Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T16:46:52.668Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T16:47:52.145Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T16:47:52.156Z"}
+{"level":"info","message":"Table \"users\" was cleared","timestamp":"2018-06-10T16:47:54.937Z"}
+{"level":"error","message":"User with id \"2332\" was not found","timestamp":"2018-06-10T16:48:03.867Z"}
+{"level":"error","message":"User with id \"1\" was not found","timestamp":"2018-06-10T16:48:07.656Z"}
+{"level":"error","message":"User with id \"12\" was not found","timestamp":"2018-06-10T16:48:10.219Z"}
+{"level":"error","message":"User with id \"34\" was not found","timestamp":"2018-06-10T16:48:15.700Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T16:49:39.307Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T16:49:39.309Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T16:50:17.455Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T16:50:17.457Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T16:50:40.312Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T16:50:40.313Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T16:53:42.765Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T16:53:42.767Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T16:54:21.028Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T16:54:21.030Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T17:05:56.853Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T17:05:56.854Z"}
+{"level":"error","message":"User with id \"34\" was not found","timestamp":"2018-06-10T17:06:04.289Z"}
+{"level":"error","message":"User with id \"44\" was not found","timestamp":"2018-06-10T17:06:09.030Z"}
+{"level":"error","message":"User with id \"55\" was not found","timestamp":"2018-06-10T17:06:13.427Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T17:06:59.535Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T17:06:59.537Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T17:07:08.192Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T17:07:08.193Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T17:10:58.214Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T17:10:58.215Z"}
+{"level":"error","message":"TypeORM error QueryFailedError: column \"phoneNumber\" contains null values","timestamp":"2018-06-10T17:35:22.920Z"}
+{"level":"error","message":"TypeORM error QueryFailedError: column \"phoneNumber\" contains null values","timestamp":"2018-06-10T17:35:49.792Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T17:36:05.224Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T17:36:05.226Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T17:44:46.452Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T17:44:46.453Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T17:46:35.373Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T17:46:35.379Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T17:47:04.688Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T17:47:04.693Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T17:49:23.098Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T17:49:23.099Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T18:04:25.930Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T18:04:25.932Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T18:05:06.087Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T18:05:06.091Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T18:05:17.695Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T18:05:17.696Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T18:05:43.241Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T18:05:43.244Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T18:07:42.599Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T18:07:42.600Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T18:10:12.893Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T18:10:12.894Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T18:10:27.284Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T18:10:27.285Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T18:12:11.581Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T18:12:11.582Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T18:13:33.114Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T18:13:33.117Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T18:15:01.829Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T18:15:01.831Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T18:15:24.229Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T18:15:24.230Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T18:16:33.276Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T18:16:33.278Z"}
+{"level":"error","message":"User with id \"134\" was not found","timestamp":"2018-06-10T18:16:53.072Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T18:18:06.771Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T18:18:06.773Z"}
+{"level":"info","message":"Table \"users\" was cleared","timestamp":"2018-06-10T18:19:23.592Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T18:19:43.120Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T18:19:43.121Z"}
+{"level":"info","message":"Table \"users\" was cleared","timestamp":"2018-06-10T18:19:47.894Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T18:20:09.143Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T18:20:09.145Z"}
+{"level":"info","message":"HTTP Server listening on port: 3000","timestamp":"2018-06-10T18:25:22.216Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-10T18:25:22.217Z"}

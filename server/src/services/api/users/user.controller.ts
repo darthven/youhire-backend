@@ -1,35 +1,49 @@
 import { Context } from "koa"
-import { getManager, Repository } from "typeorm"
+import { Param, Body, Get, Post, Put, Delete, JsonController, HttpCode } from "routing-controllers"
+import { Inject } from "typedi"
 
 import User from "../../../db/entities/user"
-import logger from "../../../config/winston.user"
-import { validate, ValidationError } from "class-validator"
+import UserService from "./user.service"
 
-const saveUser = async (context: Context): Promise<void> => {
-    const user: User = Object.assign(new User(), context.request.body)
-    return await validate(user).then(async (errors: ValidationError[]) => {
-        if (errors.length > 0) {
-            context.status = 400
-            context.body = {
-                message: `Validation Errors: ${errors}`
-            }
-        } else {
-            const userRepository: Repository<User> = getManager().getRepository(User)
-            const newUser: User = userRepository.create(user)
-            await userRepository.save(newUser)
-            context.body = newUser
-        }
-    })
-}
+@JsonController("/users")
+export class UserController {
 
-const getUserById = async (context: Context): Promise<User> => {
-    const userRepository: Repository<User> = getManager().getRepository(User)
-    const user: User = await userRepository.findOne((context as any).params.id)
-    if (!user) {
-        context.status = 404
-        return
+    @Inject()
+    private readonly service: UserService
+
+    @HttpCode(200)
+    @Get()
+    async getAllUsers(): Promise<void> {
+       return await this.service.findAllUsers().then((users) => users).catch((err) => err)
     }
-    context.body = user
-}
 
-export { saveUser, getUserById }
+    @HttpCode(200)
+    @Get("/:id")
+    async getUser(@Param("id") id: number): Promise<User> {
+        return await this.service.findUserById(id).then((user) => user).catch((err) => err)
+    }
+
+    @HttpCode(200)
+    @Post()
+    async createUser(@Body() user: User): Promise<User> {
+        return await this.service.createUser(user).then((res) => res).catch((err) => err)
+    }
+
+    @HttpCode(200)
+    @Put("/:id")
+    async updateUser(@Param("id") id: number, @Body() user: User): Promise<{ message: string }> {
+       return await this.service.updateUser(id, user).then((res) => res).catch((err) => err)
+    }
+
+    @HttpCode(200)
+    @Delete("/:id")
+    async removeUser(@Param("id") id: number): Promise<{ message: string }> {
+       return await this.service.deleteUser(id).then((res) => res).catch((err) => err)
+    }
+
+    @HttpCode(200)
+    @Delete()
+    async clearUsers(): Promise<{ message: string }> {
+        return await this.service.clearUsers().then(() => null).catch((err) => err)
+    }
+}

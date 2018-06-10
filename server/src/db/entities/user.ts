@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, OneToOne, JoinColumn } from "typeorm"
-import { IsInt, IsEmail, IsDate, Min, Max, MinLength, MaxLength, IsString, IsAlpha, IsNotEmpty} from "class-validator"
+import { IsInt, IsEmail, IsDate, Min, Max, MinLength, MaxLength,
+    IsString, IsAlpha, IsNotEmpty, IsDateString, IsMobilePhone} from "class-validator"
 
 import Gender from "./gender"
 import Spender from "./spender"
@@ -12,6 +13,9 @@ export default class User {
 
     @PrimaryGeneratedColumn()
     id: number
+
+    @Column()
+    phoneNumber: string
 
     @Column()
     @IsAlpha({ message: "Only alphabetic characters can be used"})
@@ -37,7 +41,7 @@ export default class User {
     email: string
 
     @Column()
-    @IsDate()
+    @IsDateString()
     @IsNotEmpty()
     birthDate: Date
 
