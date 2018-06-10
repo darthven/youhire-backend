@@ -1,4 +1,5 @@
 import { Context } from "koa"
+import { DeleteResult, UpdateEvent, UpdateResult } from "typeorm";
 import { Param, Body, Get, Post, Put, Delete, JsonController, HttpCode } from "routing-controllers"
 import { Inject } from "typedi"
 
@@ -13,7 +14,7 @@ export class UserController {
 
     @HttpCode(200)
     @Get()
-    async getAllUsers(): Promise<void> {
+    async getAllUsers(): Promise<User[]> {
        return await this.service.findAllUsers().then((users) => users).catch((err) => err)
     }
 
@@ -31,19 +32,19 @@ export class UserController {
 
     @HttpCode(200)
     @Put("/:id")
-    async updateUser(@Param("id") id: number, @Body() user: User): Promise<{ message: string }> {
+    async updateUser(@Param("id") id: number, @Body() user: User): Promise<UpdateResult> {
        return await this.service.updateUser(id, user).then((res) => res).catch((err) => err)
     }
 
     @HttpCode(200)
     @Delete("/:id")
-    async removeUser(@Param("id") id: number): Promise<{ message: string }> {
+    async removeUser(@Param("id") id: number): Promise<DeleteResult> {
        return await this.service.deleteUser(id).then((res) => res).catch((err) => err)
     }
 
     @HttpCode(200)
     @Delete()
-    async clearUsers(): Promise<{ message: string }> {
+    async clearUsers(): Promise<DeleteResult> {
         return await this.service.clearUsers().then(() => null).catch((err) => err)
     }
 }
