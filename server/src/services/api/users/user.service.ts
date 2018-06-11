@@ -15,27 +15,27 @@ export default class UserService {
         return await this.repository.findByPhoneNumber(user.email) ? true : false;
     }
 
-    async createUser(user: User): Promise<User> {
+    public async createUser(user: User): Promise<User> {
         return await this.repository.save(user)
     }
 
-    async updateUser(id: number, user: User): Promise<UpdateResult> {
+    public async updateUser(id: number, user: User): Promise<UpdateResult> {
         return await this.repository.update(id, user)
     }
 
-    async findUserById(id: number): Promise<User> {
+    public async findUserById(id: number): Promise<User> {
         return await this.repository.findOne(id)
     }
 
-    async findAllUsers(): Promise<User[]> {
+    public async findAllUsers(): Promise<User[]> {
         return await this.repository.find()
     }
 
-    async deleteUser(id: number): Promise<DeleteResult> {
+    public async deleteUser(id: number): Promise<DeleteResult> {
         return await this.repository.delete(id)
     }
 
-    async clearUsers(): Promise<void> {
+    public async clearUsers(): Promise<void> {
         return await this.repository.clear()
     }
 

@@ -2,12 +2,14 @@ import "reflect-metadata"
 import * as Koa from "koa"
 import * as bodyParser from "koa-bodyparser"
 import * as Router from "koa-router"
-import { createConnection, Connection, QueryFailedError, useContainer as ormUseContainer } from "typeorm"
+import { createConnection, Connection, QueryFailedError,
+  useContainer as ormUseContainer, ConnectionOptions } from "typeorm"
 import { createKoaServer, useContainer as routingUseContainer } from "routing-controllers"
 import Container from "typedi"
 import { Server } from "net"
 
 import env from "./config/env.config"
+import dbConfig from "./config/ormconfig"
 import logger from "./config/winston.user"
 import { UserController } from "./services/api/users/user.controller"
 
@@ -26,7 +28,7 @@ const runServer = (): Server => {
 }
 
 const runApplication = async (): Promise<Server | QueryFailedError> => {
-  return createConnection().then(async (connection: Connection) => await runServer())
+  return createConnection(dbConfig as ConnectionOptions).then(async (connection: Connection) => await runServer())
     .catch((err: QueryFailedError) => {
       logger.error(`TypeORM error ${err}`)
       return err
