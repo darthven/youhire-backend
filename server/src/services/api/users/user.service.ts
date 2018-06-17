@@ -11,10 +11,6 @@ export default class UserService {
     @InjectRepository()
     private repository: UserRepository
 
-    public async userExist(user: User): Promise<boolean> {
-        return await this.repository.findByPhoneNumber(user.email) ? true : false;
-    }
-
     public async createUser(user: User): Promise<User> {
         return await this.repository.save(user)
     }

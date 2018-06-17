@@ -1,10 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, OneToOne, JoinColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, OneToOne, JoinColumn, OneToMany } from "typeorm"
 import { IsInt, IsEmail, IsDate, Min, Max, MinLength, MaxLength,
-    IsString, IsAlpha, IsNotEmpty, IsDateString, IsMobilePhone} from "class-validator"
+    IsString, IsAlpha, IsNotEmpty, IsDateString, IsMobilePhone, IsNumberString, IsArray, IsEmpty} from "class-validator"
 
 import Gender from "./gender"
 import Spender from "./spender"
 import Earner from "./earner"
+import Code from "./code";
+import PhoneNumber from "./phone-number";
 
 @Entity({
     name: "users"
@@ -14,46 +16,61 @@ export default class User {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
-    phoneNumber: string
+    @OneToOne((type) => PhoneNumber)
+    @JoinColumn()
+    phoneNumber: PhoneNumber
 
-    @Column()
-    @IsAlpha({ message: "Only alphabetic characters can be used"})
-    @MinLength(3, { message: "Minimum length is 3" })
-    @MaxLength(20, { message: "Maximum length is 20" })
+    @ManyToMany((type) => PhoneNumber)
+    @JoinTable({
+        name: "numbers_history"
+    })
+    numbersHistory: PhoneNumber[]
+
+    @Column({
+        nullable: true
+    })
+    @IsAlpha()
+    @MinLength(3)
+    @MaxLength(20)
     firstName: string
 
-    @Column()
+    @Column({
+        nullable: true
+    })
     @IsAlpha()
     @MinLength(3)
     @MaxLength(20)
     lastName: string
 
-    @Column()
+    @Column({
+        nullable: true
+    })
     @IsInt()
     @Min(16)
     @Max(100)
     age: number
 
-    @Column()
+    @Column({
+        nullable: true
+    })
     @IsEmail()
-    @IsNotEmpty()
     email: string
 
-    @Column()
+    @Column({
+        nullable: true
+    })
     @IsDateString()
-    @IsNotEmpty()
     birthDate: Date
 
     @OneToOne((type) => Gender)
     @JoinColumn()
     gender: Gender
 
-    @OneToOne((type) => Gender)
+    @OneToOne((type) => Earner)
     @JoinColumn()
     earner: Earner
 
-    @OneToOne((type) => Gender)
+    @OneToOne((type) => Spender)
     @JoinColumn()
     spender: Spender
 

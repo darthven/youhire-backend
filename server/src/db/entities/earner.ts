@@ -10,9 +10,7 @@ export default class Earner {
     @PrimaryGeneratedColumn()
     id: number
 
-    @ManyToMany((type) => Category, {
-        cascade: true
-    })
+    @ManyToMany((type) => Category)
     @JoinColumn()
     category: Category
 
