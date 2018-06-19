@@ -14,15 +14,13 @@ interface SignInConfirmRequest {
     phoneNumber: string
 }
 
-interface UserDTO  {
+class UserDTO  {
 
     id: number
 
     type: string
 
     phoneNumber: string
-
-    numbersHistory: string[]
 
     firstName: string
 
@@ -35,6 +33,21 @@ interface UserDTO  {
     birthDate: Date
 
     gender: string
+
+    category: Category
+
+    constructor(user: User, type: string) {
+        this.id = user.id
+        this.type = type
+        this.phoneNumber = user.phoneNumber.value
+        this.firstName = user.firstName
+        this.lastName = user.lastName
+        this.age = user.age
+        this.email = user.email
+        this.birthDate = user.birthDate
+        this.gender = (user.gender) ? user.gender.genderType : null
+        this.category = user[type].category
+    }
 }
 
 interface EarnerDTO extends UserDTO {

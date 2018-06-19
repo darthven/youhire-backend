@@ -16,8 +16,12 @@ export default class User {
     @PrimaryGeneratedColumn()
     id: number
 
-    @OneToOne((type) => PhoneNumber)
-    @JoinColumn()
+    @OneToOne((type) => PhoneNumber, {
+        cascade: true
+    })
+    @JoinColumn({
+        name: "phone_number_id"
+    })
     phoneNumber: PhoneNumber
 
     @ManyToMany((type) => PhoneNumber)
@@ -62,16 +66,28 @@ export default class User {
     @IsDateString()
     birthDate: Date
 
-    @OneToOne((type) => Gender)
-    @JoinColumn()
+    @OneToOne((type) => Gender, {
+        cascade: true
+    })
+    @JoinColumn({
+        name: "gender_id"
+    })
     gender: Gender
 
-    @OneToOne((type) => Earner)
-    @JoinColumn()
+    @OneToOne((type) => Earner, {
+        cascade: true
+    })
+    @JoinColumn({
+        name: "earner_id"
+    })
     earner: Earner
 
-    @OneToOne((type) => Spender)
-    @JoinColumn()
+    @OneToOne((type) => Spender, {
+        cascade: true
+    })
+    @JoinColumn({
+        name: "spender_id"
+    })
     spender: Spender
 
 }

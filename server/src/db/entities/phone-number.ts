@@ -23,7 +23,9 @@ export default class PhoneNumber {
     createdAt: string
 
     @OneToOne((type) => User)
-    @JoinColumn()
+    @JoinColumn({
+        name: "user_id"
+    })
     user: User
 
     @OneToMany((type) => Code, (code) => code.phoneNumber)

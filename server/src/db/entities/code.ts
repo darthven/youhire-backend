@@ -1,7 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
 import { IsNumberString, IsDateString } from "class-validator"
 
-import User from "./user";
 import PhoneNumber from "./phone-number";
 
 @Entity({

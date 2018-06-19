@@ -1,0 +1,38 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    container_name:
+      youhire_db_test
+    environment:
+      POSTGRES_PASSWORD: 12345678
+      POSTGRES_USER: test
+      POSTGRES_DB: youhire_db_test
+    networks:
+      - webnet
+  server:
+    image: server
+    container_name:
+      youhire_server_test
+    build: ./server
+    depends_on:
+      - db
+    environment:
+      PG_HOST: db
+      PORT: 80      
+    command:
+      ["npm", "run", "test"]
+    ports:
+      - "2043:80"
+    volumes:
+      - ./server:/usr/src/app
+    networks:
+      - webnet
+networks:
+  webnet:
+    
+# docker kill $(docker ps -q)                                       # stop all containers
+# docker rm $(docker ps -a -q)                                      # remove all containers
+# docker rmi $(docker images -q)                                    # remove all docker images
+# docker volume ls -qf dangling=true | xargs docker volume rm    # remove all docker volumes
+
