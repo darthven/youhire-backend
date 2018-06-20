@@ -66,9 +66,7 @@ export default class User {
     @IsDateString()
     birthDate: Date
 
-    @OneToOne((type) => Gender, {
-        cascade: true
-    })
+    @OneToOne((type) => Gender)
     @JoinColumn({
         name: "gender_id"
     })

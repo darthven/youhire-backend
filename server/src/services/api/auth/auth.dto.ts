@@ -1,8 +1,4 @@
 import User from "../../../db/entities/user"
-import Earner from "../../../db/entities/earner"
-import Spender from "../../../db/entities/spender"
-import PhoneNumber from "../../../db/entities/phone-number"
-import Gender from "../../../db/entities/gender"
 import Category from "../../../db/entities/category";
 
 interface SignInRequest {
@@ -12,6 +8,29 @@ interface SignInRequest {
 interface SignInConfirmRequest {
     code: string
     phoneNumber: string
+}
+
+interface ProfileRequest {
+    phoneNumber: string
+    firstName: string
+    lastName: string
+    birthDate: Date
+    gender: string
+    email: string
+    age: number
+    category: Category
+}
+
+interface Profile {
+    status: string,
+    token: string,
+    info: UserDTO
+}
+
+interface AuthUser {
+    id: number
+    phoneNumber: string
+    type: string
 }
 
 class UserDTO  {
@@ -45,30 +64,16 @@ class UserDTO  {
         this.age = user.age
         this.email = user.email
         this.birthDate = user.birthDate
-        this.gender = (user.gender) ? user.gender.genderType : null
+        this.gender = (user.gender) ? user.gender.type : null
         this.category = user[type].category
     }
-}
-
-interface EarnerDTO extends UserDTO {
-    category: Category
-}
-
-interface SpenderDTO extends UserDTO {
-    creditData: any
-}
-
-interface Profile {
-    status: string,
-    token: string,
-    profile: EarnerDTO | SpenderDTO
 }
 
 export {
     SignInRequest,
     SignInConfirmRequest,
+    ProfileRequest,
     UserDTO,
-    EarnerDTO,
-    SpenderDTO,
-    Profile
+    Profile,
+    AuthUser
 }

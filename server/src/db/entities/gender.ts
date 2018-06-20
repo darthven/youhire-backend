@@ -9,6 +9,6 @@ export default class Gender {
     id: number
 
     @Column()
-    genderType: string
+    type: string
 
 }

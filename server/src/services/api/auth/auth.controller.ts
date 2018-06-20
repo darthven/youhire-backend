@@ -1,9 +1,9 @@
-import { DeleteResult, UpdateEvent, UpdateResult } from "typeorm";
-import { Param, Body, Get, Post, Put, Delete, JsonController, HttpCode, HttpError } from "routing-controllers"
+import { Param, Body, Get, Post, Put, JsonController, HttpCode, Authorized, CurrentUser } from "routing-controllers"
 import { Inject } from "typedi"
+import { Context } from "koa"
 
 import AuthService from "./auth.service"
-import { SignInConfirmRequest, SignInRequest } from "./auth.dto"
+import { SignInConfirmRequest, SignInRequest, ProfileRequest, AuthUser } from "./auth.dto"
 
 @JsonController("/api/user")
 export class AuthController {
@@ -24,9 +24,17 @@ export class AuthController {
         return await this.authService.confirm(request, userType)
     }
 
+    @Authorized()
+    @HttpCode(200)
+    @Put("/profile")
+    public async fillUserProfile(@Body() request: ProfileRequest, @CurrentUser({required: true}) user: AuthUser) {
+        return await this.authService.fillUser(request, user)
+    }
+
+    @Authorized()
     @HttpCode(200)
     @Get("/profile")
-    public async getProfile() {
-       return await null
+    public async getProfile(@CurrentUser({required: true}) user: AuthUser) {
+       return await this.authService.getUserProfile(user)
     }
 }
