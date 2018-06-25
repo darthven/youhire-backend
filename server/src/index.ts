@@ -3,19 +3,28 @@ import { createConnection, Connection, useContainer as ormUseContainer, Connecti
 import { createKoaServer, useContainer as routingUseContainer, Action } from "routing-controllers"
 import Container from "typedi"
 import { Server } from "http"
+import koaSwagger = require("koa2-swagger-ui")
 
 import logger from "./config/winston.user"
 import AuthUtil from "./utils/auth.util"
 
+const provideDocumentation = (environment: any): void => {
+  koaSwagger({
+    routePrefix: "/docs",
+    swaggerOptions: {
+      url: `http://localhost:${environment.PORT}/swagger`
+    }
+  })
+}
+
 const runServer = (controllers: any[], environment: any): Server => {
   routingUseContainer(Container)
-  return createKoaServer({
+  const koaServer = createKoaServer({
+    cors: true,
     controllers,
     authorizationChecker: async (action: Action, roles: string[]) => {
       const token = action.request.headers.authorization.slice(7)
-      logger.info("TOKEN", token)
       const user = AuthUtil.decodeToken(token)
-      logger.info("User", user)
       if (user) {
         return true
       }
@@ -23,10 +32,13 @@ const runServer = (controllers: any[], environment: any): Server => {
     },
     currentUserChecker: async (action: Action) => {
       const token = action.request.headers.authorization.slice(7)
-      logger.info("TOKEN", token)
       return AuthUtil.decodeToken(token)
     }
-  }).listen(environment.PORT, (): void => {
+  })
+  koaServer.use(
+    provideDocumentation(environment)
+  )
+  return koaServer.listen(environment.PORT, (): void => {
     logger.info(`HTTP Server listening on port: ${environment.PORT}`)
     logger.info(`Environment: ${environment.NODE_ENV}`)
   })

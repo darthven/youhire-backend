@@ -1,5 +1,5 @@
 import User from "../../../db/entities/user"
-import Category from "../../../db/entities/category";
+import Category from "../../../db/entities/category"
 
 interface SignInRequest {
     phoneNumber: string
@@ -65,7 +65,7 @@ class UserDTO  {
         this.email = user.email
         this.birthDate = user.birthDate
         this.gender = (user.gender) ? user.gender.type : null
-        this.category = user[type].category
+        // this.category = user[type].category
     }
 }
 

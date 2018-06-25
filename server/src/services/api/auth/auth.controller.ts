@@ -1,6 +1,5 @@
 import { Param, Body, Get, Post, Put, JsonController, HttpCode, Authorized, CurrentUser } from "routing-controllers"
 import { Inject } from "typedi"
-import { Context } from "koa"
 
 import AuthService from "./auth.service"
 import { SignInConfirmRequest, SignInRequest, ProfileRequest, AuthUser } from "./auth.dto"

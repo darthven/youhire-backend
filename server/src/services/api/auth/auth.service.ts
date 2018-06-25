@@ -85,7 +85,7 @@ export default class AuthService {
     }
 
     public async fillUser(profileRequest: ProfileRequest, currentUser: AuthUser): Promise<UserDTO> {
-        const user: User = await this.userRepository.findOne(currentUser.id)
+        const user: User = await this.userRepository.findUserByIdAndPhoneNumber(currentUser.id)
         if (currentUser.type === UserType.EARNER) {
             return new UserDTO(await this.fillUserAsEarner(currentUser.id, profileRequest), currentUser.type)
         }
@@ -93,7 +93,8 @@ export default class AuthService {
     }
 
     public async getUserProfile(currentUser: AuthUser) {
-        return new UserDTO(await this.userRepository.findOne(currentUser.id), currentUser.type)
+        const userData: User = await this.userRepository.findUserByIdAndPhoneNumber(currentUser.id)
+        return new UserDTO(userData, currentUser.type)
     }
 
     private async savePhoneNumber(value: string): Promise<PhoneNumber> {
@@ -134,13 +135,11 @@ export default class AuthService {
             const savedUser: User = await this.userRepository.save(userData)
             logger.info("Saved user", JSON.stringify(savedUser, null, 4))
             return {
-                ...this.getUserDTO(savedUser, UserType.EARNER),
-                category: savedUser.earner.category
+                ...this.getUserDTO(savedUser, UserType.EARNER)
             }
         }
         return {
-            ...this.getUserDTO(user, UserType.EARNER),
-            category: user.earner.category
+            ...this.getUserDTO(userData, UserType.EARNER)
         }
     }
 
@@ -162,7 +161,6 @@ export default class AuthService {
     private async confirmEarner(phoneNumber: PhoneNumber) {
         const user: User = await this.userRepository.findUserAsEarnerByPhoneNumber(phoneNumber)
             || await this.createUserWithoutRole(phoneNumber)
-        logger.info("Extracted user", JSON.stringify(user, null, 4))
         const userEarner: UserDTO = await this.createEarner(user)
         return {
             status: "Success",
@@ -177,7 +175,6 @@ export default class AuthService {
     private async confirmSpender(phoneNumber: PhoneNumber) {
         const user: User = await this.userRepository.findUserAsSpenderByPhoneNumber(phoneNumber)
             || await this.createUserWithoutRole(phoneNumber)
-        logger.info("Extracted user", JSON.stringify(user, null, 4))
         const userSpender: UserDTO = await this.createSpender(user)
         return {
             status: "Success",
@@ -209,9 +206,9 @@ export default class AuthService {
 
     private async fillUserAsEarner(userId: number, profileRequest: ProfileRequest): Promise<User> {
         const user: User = await this.userRepository.findUserAsEarnerById(userId)
-        this.fillUserGeneralData(user, profileRequest)
-        user.earner.category = profileRequest.category
-        await this.earnerRepository.save(user.earner)
+        await this.fillUserGeneralData(user, profileRequest)
+        // user.earner.category = profileRequest.category
+        // await this.earnerRepository.save(user.earner)
         return this.userRepository.save(user)
     }
 
