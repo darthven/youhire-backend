@@ -12,4 +12,8 @@ export default class PhoneNumberRepository extends Repository<PhoneNumber> {
         return !isNullOrUndefined(await this.findOne({ value }))
     }
 
+    public async getPhoneNumbersByUserAndCodes(): Promise<PhoneNumber[]> {
+        return await this.find({ relations: ["codes", "user"]})
+    }
+
 }

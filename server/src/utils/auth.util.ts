@@ -1,7 +1,7 @@
 import * as jwt from "jsonwebtoken"
+import * as random from "randomstring"
 
 import env from "../config/env.config"
-import User from "../db/entities/user"
 
 export default class AuthUtil {
 
@@ -12,4 +12,11 @@ export default class AuthUtil {
     public static decodeToken(token: string): any {
         return jwt.decode(token)
     }
-}
+
+    public static generateVerificationCode(length: number): string {
+       return random.generate({
+           length,
+           charset: "alphanumeric"
+       })
+    }
+ }

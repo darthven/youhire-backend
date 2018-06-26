@@ -50,7 +50,8 @@ export default class AuthService {
 
     public async send(signInRequest: SignInRequest): Promise<{ message: string }> {
         const formattedNumber: string = await this.smsService.formatNumber(signInRequest.phoneNumber)
-        const savedNumber: PhoneNumber = await this.savePhoneNumber(formattedNumber)
+        const savedNumber: PhoneNumber =  await this.phoneNumberRepository.findOne({ value: formattedNumber})
+                                    || await this.savePhoneNumber(formattedNumber)
         const savedCode: Code = await this.saveVerificationCode(savedNumber)
         try {
             await this.smsService.sendSMS(signInRequest, savedCode)
@@ -76,9 +77,9 @@ export default class AuthService {
             throw new InvalidVerificationCodeError()
         }
         if (userType === UserType.EARNER) {
-            return await this.confirmEarner(phoneNumber)
+            return await this.confirmEarner(phoneNumber, code)
         } else if (userType === UserType.SPENDER) {
-            return await this.confirmSpender(phoneNumber)
+            return await this.confirmSpender(phoneNumber, code)
         } else {
             throw new RoleNotFoundError(userType)
         }
@@ -106,14 +107,14 @@ export default class AuthService {
 
     private async saveVerificationCode(phoneNumber: PhoneNumber): Promise<Code> {
         const code = new Code()
-        code.value = this.generateCode(0, 9)
+        code.value = this.generateCode(7)
         code.createdAt = new Date().toISOString()
         code.phoneNumber = phoneNumber
         return await this.codeRepository.save(code)
     }
 
-    private generateCode(from: number, to: number): string {
-        return "12345"
+    private generateCode(length: number): string {
+        return AuthUtil.generateVerificationCode(length)
     }
 
     private async createUserWithoutRole(phoneNumber: PhoneNumber): Promise<User> {
@@ -124,7 +125,6 @@ export default class AuthService {
     }
 
     private getUserDTO(user: User, type: string): UserDTO {
-        const { id, phoneNumber, gender, firstName, lastName, email, birthDate, age } = user
         return new UserDTO(user, type)
     }
 
@@ -158,10 +158,14 @@ export default class AuthService {
         }
     }
 
-    private async confirmEarner(phoneNumber: PhoneNumber) {
+    private async confirmEarner(phoneNumber: PhoneNumber, code: Code) {
         const user: User = await this.userRepository.findUserAsEarnerByPhoneNumber(phoneNumber)
             || await this.createUserWithoutRole(phoneNumber)
         const userEarner: UserDTO = await this.createEarner(user)
+        code.activatedAt = new Date().toISOString()
+        const savedCode = await this.codeRepository.save(code)
+        phoneNumber.codes = [code]
+        await this.phoneNumberRepository.save(phoneNumber)
         return {
             status: "Success",
             token: AuthUtil.generateToken({ id: userEarner.id,
@@ -172,10 +176,12 @@ export default class AuthService {
         }
     }
 
-    private async confirmSpender(phoneNumber: PhoneNumber) {
+    private async confirmSpender(phoneNumber: PhoneNumber, code: Code) {
         const user: User = await this.userRepository.findUserAsSpenderByPhoneNumber(phoneNumber)
             || await this.createUserWithoutRole(phoneNumber)
         const userSpender: UserDTO = await this.createSpender(user)
+        code.activatedAt = new Date().toISOString()
+        await this.codeRepository.save(code)
         return {
             status: "Success",
             token: AuthUtil.generateToken({ id: userSpender.id,
@@ -188,19 +194,25 @@ export default class AuthService {
 
     private async fillUserGeneralData(user: User, profileRequest: ProfileRequest): Promise<User> {
         const gender: Gender = await this.genderRepository.findOne({ type: profileRequest.gender})
-        const phoneNumber: PhoneNumber = await this.phoneNumberRepository.save({
-            value: profileRequest.phoneNumber,
-            createdAt: new Date().toISOString()
-        } as PhoneNumber)
-        user.phoneNumber = phoneNumber
         user.gender = gender
-        user.numbersHistory.push(user.phoneNumber)
         user.firstName = profileRequest.firstName
         user.lastName = profileRequest.lastName
         user.firstName = profileRequest.firstName
         user.email = profileRequest.email
         user.age = profileRequest.age
         user.birthDate = profileRequest.birthDate
+        return this.updatePhoneNumber(user, profileRequest.phoneNumber)
+    }
+
+    private async updatePhoneNumber(user: User, value: string): Promise<User> {
+        const phoneNumber: PhoneNumber = await this.phoneNumberRepository.findOne({ value })
+        if (!phoneNumber) {
+            user.phoneNumber = await this.phoneNumberRepository.save({
+                value,
+                createdAt: new Date().toISOString()
+            } as PhoneNumber)
+            user.numbersHistory.push(phoneNumber)
+        }
         return user
     }
 

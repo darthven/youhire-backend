@@ -14,13 +14,13 @@ export class UserController {
     @HttpCode(200)
     @Get()
     public async getAllUsers(): Promise<User[]> {
-       return await this.service.findAllUsers().then((users) => users).catch((err) => err)
+       return await this.service.findAllUsers()
     }
 
     @HttpCode(200)
     @Get("/:id")
     public async getUser(@Param("id") id: number): Promise<User> {
-        return await this.service.findUserById(id).then((user) => user).catch((err) => err)
+        return await this.service.findUserById(id)
     }
 
     @HttpCode(200)

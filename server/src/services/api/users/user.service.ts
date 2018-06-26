@@ -24,7 +24,7 @@ export default class UserService {
     }
 
     public async findAllUsers(): Promise<User[]> {
-        return await this.repository.find()
+        return await this.repository.findAllUsersByPhoneNumberAndGender()
     }
 
     public async deleteUser(id: number): Promise<DeleteResult> {

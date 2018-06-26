@@ -11,6 +11,10 @@ import Earner from "../../../db/entities/earner"
 @EntityRepository(User)
 export default class UserRepository extends Repository<User> {
 
+    public async findAllUsersByPhoneNumberAndGender(): Promise<User[]> {
+        return await this.find({ relations: ["phoneNumber", "numbersHistory", "gender"]})
+    }
+
     public async findUserByIdAndPhoneNumber(userId: number): Promise<User> {
         return (await this.find({ relations: ["phoneNumber", "numbersHistory"]}))
             .find((data) => data.id === userId)

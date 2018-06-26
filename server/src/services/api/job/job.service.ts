@@ -16,14 +16,24 @@ export default class JobService {
     public async getAddressByCoordinates(location: geocoder.Location): Promise<JobLocation> {
         const entry: geocoder.Entry = (await geocoder(this.geocoderOptions).reverse(location)).shift()
         return {
-            address: entry.formattedAddress
+            streetNumber: entry.streetNumber,
+            streetName: entry.streetName,
+            city: entry.city,
+            district: entry.administrativeLevels.level2long,
+            country: entry.country,
+            zipcode: entry.zipcode
         }
     }
 
     public async getAddressesByName(locationName: string): Promise<JobLocation[]> {
         return (await geocoder(this.geocoderOptions).geocode(locationName)).map((entry) => {
             return {
-                address: entry.formattedAddress
+                streetNumber: entry.streetNumber,
+                streetName: entry.streetName,
+                city: entry.city,
+                district: entry.administrativeLevels.level2long,
+                country: entry.country,
+                zipcode: entry.zipcode
             }
         })
     }

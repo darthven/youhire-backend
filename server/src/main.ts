@@ -7,6 +7,8 @@ import { AuthController } from "./services/api/auth/auth.controller"
 import { UserController } from "./services/api/users/user.controller"
 import JobController from "./services/api/job/job.controller"
 import { SwaggerController } from "./services/api/docs/swagger.controller"
+import { CodeController } from "./services/api/code/code.controller"
+import { PhoneNumberController } from "./services/api/phone-number/phone-number.controller"
 import app from "./index"
 
 const runApplication = async (): Promise<void> => {
@@ -14,6 +16,8 @@ const runApplication = async (): Promise<void> => {
       AuthController,
       UserController,
       JobController,
+      CodeController,
+      PhoneNumberController,
       SwaggerController
     ]
     await app.connectToDatabase(dbConfig as ConnectionOptions)

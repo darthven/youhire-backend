@@ -16,18 +16,14 @@ export default class User {
     @PrimaryGeneratedColumn()
     id: number
 
-    @OneToOne((type) => PhoneNumber, {
+    @OneToOne((type) => PhoneNumber, (phoneNumber) => phoneNumber.user, {
         cascade: true
     })
-    @JoinColumn({
-        name: "phone_number_id"
-    })
+    @JoinColumn()
     phoneNumber: PhoneNumber
 
     @ManyToMany((type) => PhoneNumber)
-    @JoinTable({
-        name: "numbers_history"
-    })
+    @JoinTable()
     numbersHistory: PhoneNumber[]
 
     @Column({
@@ -67,25 +63,19 @@ export default class User {
     birthDate: Date
 
     @OneToOne((type) => Gender)
-    @JoinColumn({
-        name: "gender_id"
-    })
+    @JoinColumn()
     gender: Gender
 
     @OneToOne((type) => Earner, {
         cascade: true
     })
-    @JoinColumn({
-        name: "earner_id"
-    })
+    @JoinColumn()
     earner: Earner
 
     @OneToOne((type) => Spender, {
         cascade: true
     })
-    @JoinColumn({
-        name: "spender_id"
-    })
+    @JoinColumn()
     spender: Spender
 
 }

@@ -12,4 +12,8 @@ export default class CodeRepository extends Repository<Code> {
         return !isNullOrUndefined(await this.findOne({ value }))
     }
 
+    public async getCodesByPhoneNumber(): Promise<Code[]> {
+        return await this.find({ relations: ["phoneNumber"]})
+    }
+
 }

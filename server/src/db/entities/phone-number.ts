@@ -16,16 +16,12 @@ export default class PhoneNumber {
     @IsString()
     value: string
 
-    @Column({
-        name: "created_at"
-    })
+    @Column()
     @IsDateString()
     createdAt: string
 
-    @OneToOne((type) => User)
-    @JoinColumn({
-        name: "user_id"
-    })
+    @OneToOne((type) => User, (user) => user.phoneNumber)
+    @JoinColumn()
     user: User
 
     @OneToMany((type) => Code, (code) => code.phoneNumber)
