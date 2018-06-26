@@ -1,6 +1,6 @@
 import "reflect-metadata"
 import { createConnection, Connection, useContainer as ormUseContainer, ConnectionOptions } from "typeorm"
-import { createKoaServer, useContainer as routingUseContainer, Action } from "routing-controllers"
+import { createKoaServer, useContainer as routingUseContainer, Action, UnauthorizedError } from "routing-controllers"
 import Container from "typedi"
 import { Server } from "http"
 import koaSwagger = require("koa2-swagger-ui")
@@ -9,7 +9,7 @@ import logger from "./config/winston.user"
 import AuthUtil from "./utils/auth.util"
 
 const provideDocumentation = (environment: any): void => {
-  koaSwagger({
+  return koaSwagger({
     routePrefix: "/docs",
     swaggerOptions: {
       url: `http://localhost:${environment.PORT}/swagger`
@@ -23,10 +23,15 @@ const runServer = (controllers: any[], environment: any): Server => {
     cors: true,
     controllers,
     authorizationChecker: async (action: Action, roles: string[]) => {
-      const token = action.request.headers.authorization.slice(7)
-      const user = AuthUtil.decodeToken(token)
-      if (user) {
-        return true
+      const authorization = action.request.headers.authorization
+      if (authorization) {
+        const token = authorization.slice(7)
+        const user = AuthUtil.decodeToken(token)
+        if (user) {
+          return true
+        }
+      } else {
+        throw new UnauthorizedError("User is unauthorized")
       }
       return false
     },

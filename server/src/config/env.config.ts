@@ -6,5 +6,6 @@ export default {
     SMS_TEXT: process.env.SMS_TEXT || "{{ code }} - YOUHIRE confirmation code",
     CODE_LEN: process.env.CODE_LEN || 6,
     CODE_PERIOD: process.env.CODE_PERIOD || 5,
-    JWT_SECRET: process.env.JWT_SECRET || "1234567890"
+    JWT_SECRET: process.env.JWT_SECRET || "1234567890",
+    GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY || "AIzaSyDej5NrA2yP_kJCz1IHc_N0qFV6nyZjz8Q"
 }

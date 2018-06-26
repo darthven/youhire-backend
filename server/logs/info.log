@@ -2884,3 +2884,44 @@ amp":"2018-06-17T20:08:36.392Z"}
 {"level":"info","message":"Environment: development","timestamp":"2018-06-23T15:16:17.128Z"}
 {"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-25T11:23:04.951Z"}
 {"level":"info","message":"Environment: development","timestamp":"2018-06-25T11:23:04.954Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-25T14:11:54.201Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-25T14:11:54.204Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-25T14:12:53.848Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-25T14:12:53.852Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-25T14:13:28.065Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-25T14:13:28.068Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-25T14:16:40.826Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-25T14:16:40.828Z"}
+{"level":"info","message":"Saved user {\n    \"id\": 1,\n    \"firstName\": null,\n    \"lastName\": null,\n    \"age\": null,\n    \"email\": null,\n    \"birthDate\": null,\n    \"phoneNumber\": {\n        \"id\": 1,\n        \"value\": \"+380662405263\",\n        \"createdAt\": \"2018-06-25T14:17:36.785Z\"\n    },\n    \"numbersHistory\": [\n        {\n            \"id\": 1,\n            \"value\": \"+380662405263\",\n            \"createdAt\": \"2018-06-25T14:17:36.785Z\"\n        }\n    ],\n    \"earner\": {\n        \"id\": 1\n    }\n}","timestamp":"2018-06-25T14:17:43.632Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-25T14:21:08.318Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-25T14:21:08.320Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-25T14:54:33.699Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-25T14:54:33.701Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-25T15:00:44.451Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-25T15:00:44.453Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-25T15:05:01.886Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-25T15:05:01.889Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-25T15:06:15.730Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-25T15:06:15.732Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-25T15:06:49.652Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-25T15:06:49.654Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T07:43:02.249Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T07:43:02.252Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T07:46:42.280Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T07:46:42.283Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T07:49:16.874Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T07:49:16.877Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T07:50:42.431Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T07:50:42.436Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T07:51:17.769Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T07:51:17.772Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T08:00:05.715Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T08:00:05.718Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T08:01:55.445Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T08:01:55.448Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T08:16:03.054Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T08:16:03.057Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T08:22:53.134Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T08:22:53.137Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T08:23:31.909Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T08:23:31.911Z"}
