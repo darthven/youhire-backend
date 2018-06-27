@@ -15,6 +15,16 @@ export default class JobService {
 
     public async getAddressByCoordinates(location: geocoder.Location): Promise<JobLocation> {
         const entry: geocoder.Entry = (await geocoder(this.geocoderOptions).reverse(location)).shift()
+        return this.extractLocationFromEntry(entry)
+    }
+
+    public async getAddressesByName(locationName: string): Promise<JobLocation[]> {
+        return (await geocoder(this.geocoderOptions).geocode(locationName)).map((entry) => {
+            return this.extractLocationFromEntry(entry)
+        })
+    }
+
+    private extractLocationFromEntry(entry: geocoder.Entry): JobLocation {
         return {
             streetNumber: entry.streetNumber,
             streetName: entry.streetName,
@@ -23,18 +33,5 @@ export default class JobService {
             country: entry.country,
             zipcode: entry.zipcode
         }
-    }
-
-    public async getAddressesByName(locationName: string): Promise<JobLocation[]> {
-        return (await geocoder(this.geocoderOptions).geocode(locationName)).map((entry) => {
-            return {
-                streetNumber: entry.streetNumber,
-                streetName: entry.streetName,
-                city: entry.city,
-                district: entry.administrativeLevels.level2long,
-                country: entry.country,
-                zipcode: entry.zipcode
-            }
-        })
     }
 }

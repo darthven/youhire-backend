@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "ts-node src/main.ts",
+    "start": "ts-node src/main.ts && typeorm migration:run",
     "start:prod": "node dist/main.js",
     "test": "mocha -r ts-node/register test/**/**/*.spec.ts",
     "build": "tsc -p ."
@@ -38,6 +38,7 @@
     "@types/randomstring": "^1.1.6",
     "@types/request-promise-native": "^1.0.15",
     "@types/sinon": "^5.0.1",
+    "@types/stripe": "^5.0.15",
     "@types/supertest": "^2.0.4",
     "@types/swagger-jsdoc": "0.0.2",
     "@types/winston": "^2.3.9",

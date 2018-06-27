@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, OneToMany, JoinColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, OneToMany, JoinColumn, BeforeInsert } from "typeorm"
 import { IsString, IsDateString } from "class-validator"
 
 import User from "./user";

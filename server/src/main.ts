@@ -3,13 +3,18 @@ import { ConnectionOptions } from "typeorm"
 
 import env from "./config/env.config"
 import dbConfig from "./config/ormconfig"
+import app from "./index"
+import { seed } from "../src/db/seeds/index"
 import { AuthController } from "./services/api/auth/auth.controller"
 import { UserController } from "./services/api/users/user.controller"
 import JobController from "./services/api/job/job.controller"
 import { SwaggerController } from "./services/api/docs/swagger.controller"
 import { CodeController } from "./services/api/code/code.controller"
 import { PhoneNumberController } from "./services/api/phone-number/phone-number.controller"
-import app from "./index"
+import { CategoryController } from "./services/api/category/category.controller"
+import { StripeController } from "./services/api/stripe/stripe.controller"
+import { EarnerController } from "./services/api/earner/earner.controller"
+import { SpenderController } from "./services/api/spender/spender.controller"
 
 const runApplication = async (): Promise<void> => {
     const appControllers = [
@@ -18,9 +23,14 @@ const runApplication = async (): Promise<void> => {
       JobController,
       CodeController,
       PhoneNumberController,
-      SwaggerController
+      CategoryController,
+      StripeController,
+      SwaggerController,
+      EarnerController,
+      SpenderController
     ]
     await app.connectToDatabase(dbConfig as ConnectionOptions)
+    seed()
     app.runServer(appControllers, env)
 }
 

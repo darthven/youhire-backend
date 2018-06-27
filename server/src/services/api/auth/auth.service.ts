@@ -219,8 +219,6 @@ export default class AuthService {
     private async fillUserAsEarner(userId: number, profileRequest: ProfileRequest): Promise<User> {
         const user: User = await this.userRepository.findUserAsEarnerById(userId)
         await this.fillUserGeneralData(user, profileRequest)
-        // user.earner.category = profileRequest.category
-        // await this.earnerRepository.save(user.earner)
         return this.userRepository.save(user)
     }
 

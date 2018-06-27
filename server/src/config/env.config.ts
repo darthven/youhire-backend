@@ -7,5 +7,6 @@ export default {
     CODE_LEN: process.env.CODE_LEN || 6,
     CODE_PERIOD: process.env.CODE_PERIOD || 5,
     JWT_SECRET: process.env.JWT_SECRET || "1234567890",
-    GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY || "AIzaSyDej5NrA2yP_kJCz1IHc_N0qFV6nyZjz8Q"
+    GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY || "AIzaSyDej5NrA2yP_kJCz1IHc_N0qFV6nyZjz8Q",
+    STRIPE_API_KEY: process.env.STRIPE_API_KEY || "sk_test_dwHcFtAgdpwyMM3iprU5YCbJ"
 }

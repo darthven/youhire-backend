@@ -2967,3 +2967,101 @@ amp":"2018-06-17T20:08:36.392Z"}
 {"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T10:26:10.676Z"}
 {"level":"info","message":"Environment: development","timestamp":"2018-06-26T10:26:10.681Z"}
 {"level":"info","message":"Saved user {\n    \"id\": 1,\n    \"firstName\": null,\n    \"lastName\": null,\n    \"age\": null,\n    \"email\": null,\n    \"birthDate\": null,\n    \"phoneNumber\": {\n        \"id\": 1,\n        \"value\": \"+380662405263\",\n        \"createdAt\": \"2018-06-26T10:26:19.266Z\"\n    },\n    \"numbersHistory\": [\n        {\n            \"id\": 1,\n            \"value\": \"+380662405263\",\n            \"createdAt\": \"2018-06-26T10:26:19.266Z\"\n        }\n    ],\n    \"earner\": {\n        \"id\": 1\n    }\n}","timestamp":"2018-06-26T10:26:49.638Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T12:54:04.044Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T12:54:04.047Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T12:57:50.392Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T12:57:50.395Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T13:06:40.231Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T13:06:40.234Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T13:07:57.568Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T13:07:57.571Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T13:09:16.528Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T13:09:16.530Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T13:12:03.206Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T13:12:03.208Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T13:12:55.371Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T13:12:55.374Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T13:13:47.011Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T13:13:47.014Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T13:14:40.381Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T13:14:40.384Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T13:15:37.849Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T13:15:37.852Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T13:17:15.395Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T13:17:15.398Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T13:18:05.202Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T13:18:05.205Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T13:18:30.716Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T13:18:30.719Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T13:19:54.027Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T13:19:54.030Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T13:20:49.086Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T13:20:49.089Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T13:28:19.956Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T13:28:19.958Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T13:33:55.663Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T13:33:55.667Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T13:35:16.312Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T13:35:16.314Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T14:00:03.516Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T14:00:03.520Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T14:09:00.130Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T14:09:00.134Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T14:11:27.651Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T14:11:27.654Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T14:12:05.917Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T14:12:05.920Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T14:13:00.464Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T14:13:00.467Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T14:17:17.698Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T14:17:17.707Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T14:18:46.477Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T14:18:46.480Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T14:21:18.124Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T14:21:18.127Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T14:37:26.840Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T14:37:26.843Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T14:38:51.800Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T14:38:51.803Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T14:39:30.385Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T14:39:30.388Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T14:41:38.856Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T14:41:38.860Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T14:43:04.904Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T14:43:04.907Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T14:44:20.447Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T14:44:20.450Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T14:46:08.119Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T14:46:08.122Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T14:47:37.683Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T14:47:37.686Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-26T16:03:06.451Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-26T16:03:06.454Z"}
+{"level":"info","message":"Saved user {\n    \"id\": 1,\n    \"firstName\": null,\n    \"lastName\": null,\n    \"age\": null,\n    \"email\": null,\n    \"birthDate\": null,\n    \"phoneNumber\": {\n        \"id\": 1,\n        \"value\": \"+380662405263\",\n        \"createdAt\": \"2018-06-26T16:04:25.411Z\"\n    },\n    \"numbersHistory\": [\n        {\n            \"id\": 1,\n            \"value\": \"+380662405263\",\n            \"createdAt\": \"2018-06-26T16:04:25.411Z\"\n        }\n    ],\n    \"earner\": {\n        \"id\": 1\n    }\n}","timestamp":"2018-06-26T16:04:38.343Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-27T11:08:49.339Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-27T11:08:49.342Z"}
+{"level":"info","message":"Saved user {\n    \"id\": 1,\n    \"firstName\": null,\n    \"lastName\": null,\n    \"age\": null,\n    \"email\": null,\n    \"birthDate\": null,\n    \"phoneNumber\": {\n        \"id\": 1,\n        \"value\": \"+380662405263\",\n        \"createdAt\": \"2018-06-27T11:09:08.674Z\"\n    },\n    \"spender\": {\n        \"id\": 1\n    }\n}","timestamp":"2018-06-27T11:09:42.940Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-27T11:10:45.792Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-27T11:10:45.795Z"}
+{"level":"info","message":"Saved user {\n    \"id\": 1,\n    \"firstName\": null,\n    \"lastName\": null,\n    \"age\": null,\n    \"email\": null,\n    \"birthDate\": null,\n    \"phoneNumber\": {\n        \"id\": 1,\n        \"value\": \"+380662405263\",\n        \"createdAt\": \"2018-06-27T11:10:48.064Z\"\n    },\n    \"spender\": {\n        \"id\": 1\n    }\n}","timestamp":"2018-06-27T11:11:04.688Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-27T11:24:54.887Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-27T11:24:54.890Z"}
+{"level":"info","message":"Saved user {\n    \"id\": 1,\n    \"firstName\": null,\n    \"lastName\": null,\n    \"age\": null,\n    \"email\": null,\n    \"birthDate\": null,\n    \"phoneNumber\": {\n        \"id\": 1,\n        \"value\": \"+380662405263\",\n        \"createdAt\": \"2018-06-27T11:25:33.604Z\"\n    },\n    \"spender\": {\n        \"id\": 1\n    }\n}","timestamp":"2018-06-27T11:25:46.329Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-27T11:29:46.412Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-27T11:29:46.416Z"}
+{"level":"info","message":"USER TYPE earner","timestamp":"2018-06-27T11:30:04.190Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-27T11:30:44.172Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-27T11:30:44.175Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-27T11:32:15.136Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-27T11:32:15.139Z"}
+{"level":"info","message":"Saved user {\n    \"id\": 1,\n    \"firstName\": null,\n    \"lastName\": null,\n    \"age\": null,\n    \"email\": null,\n    \"birthDate\": null,\n    \"phoneNumber\": {\n        \"id\": 1,\n        \"value\": \"+380662405263\",\n        \"createdAt\": \"2018-06-27T11:32:20.289Z\"\n    },\n    \"spender\": {\n        \"id\": 1\n    }\n}","timestamp":"2018-06-27T11:32:35.335Z"}
+{"level":"info","message":"USER TYPE spender","timestamp":"2018-06-27T11:32:46.076Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-27T11:37:21.688Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-27T11:37:21.690Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-27T11:42:00.029Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-27T11:42:00.031Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-27T11:46:51.687Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-27T11:46:51.690Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-27T12:28:03.847Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-27T12:28:03.850Z"}
+{"level":"info","message":"Saved user {\n    \"id\": 1,\n    \"firstName\": null,\n    \"lastName\": null,\n    \"age\": null,\n    \"email\": null,\n    \"birthDate\": null,\n    \"phoneNumber\": {\n        \"id\": 1,\n        \"value\": \"+380662405263\",\n        \"createdAt\": \"2018-06-27T12:28:10.557Z\"\n    },\n    \"spender\": {\n        \"id\": 1\n    }\n}","timestamp":"2018-06-27T12:28:25.656Z"}

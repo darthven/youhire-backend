@@ -7,4 +7,7 @@ import Spender from "../../../db/entities/spender"
 @EntityRepository(Spender)
 export default class SpenderRepository extends Repository<Spender> {
 
+    public async findSpenderByIdAndStripeAccount(spenderId: number): Promise<Spender> {
+        return (await this.find({ relations: ["stripeAccount"] })).find((spender) => spender.id === spenderId)
+    }
 }

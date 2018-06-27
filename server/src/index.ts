@@ -17,23 +17,27 @@ const provideDocumentation = (environment: any): void => {
   })
 }
 
+const checkAuthorization = (action: Action, roles: string[]): boolean => {
+  const authorization = action.request.headers.authorization
+  if (authorization) {
+    const token = authorization.slice(7)
+    const user = AuthUtil.decodeToken(token)
+    if (user) {
+      return true
+    }
+  } else {
+    throw new UnauthorizedError("User is unauthorized")
+  }
+  return false
+}
+
 const runServer = (controllers: any[], environment: any): Server => {
   routingUseContainer(Container)
   const koaServer = createKoaServer({
     cors: true,
     controllers,
     authorizationChecker: async (action: Action, roles: string[]) => {
-      const authorization = action.request.headers.authorization
-      if (authorization) {
-        const token = authorization.slice(7)
-        const user = AuthUtil.decodeToken(token)
-        if (user) {
-          return true
-        }
-      } else {
-        throw new UnauthorizedError("User is unauthorized")
-      }
-      return false
+      return checkAuthorization(action, roles)
     },
     currentUserChecker: async (action: Action) => {
       const token = action.request.headers.authorization.slice(7)
@@ -49,9 +53,11 @@ const runServer = (controllers: any[], environment: any): Server => {
   })
 }
 
-const connectToDatabase = (databaseConfig: ConnectionOptions): Promise<Connection> => {
+const connectToDatabase = async (databaseConfig: ConnectionOptions): Promise<Connection> => {
   ormUseContainer(Container)
-  return createConnection(databaseConfig)
+  const connection: Connection = await createConnection(databaseConfig)
+  connection.runMigrations()
+  return connection
 }
 
 export default { connectToDatabase, runServer }
