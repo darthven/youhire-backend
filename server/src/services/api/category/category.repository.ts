@@ -18,4 +18,7 @@ export default class CategoryRepository extends TreeRepository<Category> {
         return await this.findDescendants(category)
     }
 
+    public async findSubcategoriesByNames(category: Category, names: string[]): Promise<Category[]> {
+        return (await this.findDescendants(category)).filter((cat) => names.includes(cat.name))
+    }
 }

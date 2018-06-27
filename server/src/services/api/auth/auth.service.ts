@@ -5,7 +5,8 @@ import * as jwt from "jsonwebtoken"
 
 import logger from "../../../config/winston.user"
 import env from "../../../config/env.config"
-import { SignInConfirmRequest, SignInRequest, Profile, UserDTO, ProfileRequest, AuthUser } from "./auth.dto"
+import { SignInConfirmRequest, SignInRequest, Profile, UserDTO,
+        ProfileRequest, AuthUser, CategoryDTO } from "./auth.dto"
 import Code from "../../../db/entities/code"
 import CodeRepository from "../code/code.repository"
 import PhoneNumberRepository from "../phone-number/phone-number.repository"
@@ -15,6 +16,8 @@ import User from "../../../db/entities/user"
 import Spender from "../../../db/entities/spender"
 import Earner from "../../../db/entities/earner"
 import Gender from "../../../db/entities/gender"
+import Category from "../../../db/entities/category"
+import CategoryRepository from "../category/category.repository"
 import EarnerRepository from "../earner/earner.repository"
 import SpenderRepository from "../spender/spender.repository"
 import GenderRepository from "../gender/gender.repository"
@@ -44,6 +47,9 @@ export default class AuthService {
 
     @InjectRepository()
     private spenderRepository: SpenderRepository
+
+    @InjectRepository()
+    private categoryRepository: CategoryRepository
 
     @Inject()
     private smsService: SMSService
@@ -201,6 +207,15 @@ export default class AuthService {
         user.email = profileRequest.email
         user.age = profileRequest.age
         user.birthDate = profileRequest.birthDate
+        if (profileRequest.category && user.earner) {
+            const category: Category = (await this.categoryRepository.findTrees())
+                .find((cat) => cat.name === profileRequest.category.name)
+            const subcategoriesNames: string[] = profileRequest.category.subcategories.map((s) => s.name)
+            category.subcategories = category.subcategories.filter((subCat) => {
+                return subcategoriesNames.includes(subCat.name)
+            })
+            user.earner.category = category
+        }
         return this.updatePhoneNumber(user, profileRequest.phoneNumber)
     }
 

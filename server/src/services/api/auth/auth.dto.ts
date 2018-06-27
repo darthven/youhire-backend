@@ -1,5 +1,4 @@
 import User from "../../../db/entities/user"
-import Category from "../../../db/entities/category"
 
 interface SignInRequest {
     phoneNumber: string
@@ -18,7 +17,7 @@ interface ProfileRequest {
     gender: string
     email: string
     age: number
-    category: Category
+    category: CategoryDTO
 }
 
 interface Profile {
@@ -31,6 +30,11 @@ interface AuthUser {
     id: number
     phoneNumber: string
     type: string
+}
+
+interface CategoryDTO {
+    name: string
+    subcategories?: CategoryDTO[]
 }
 
 class UserDTO  {
@@ -53,7 +57,7 @@ class UserDTO  {
 
     gender: string
 
-    category: Category
+    category: CategoryDTO
 
     constructor(user: User, type: string) {
         this.id = user.id
@@ -65,7 +69,7 @@ class UserDTO  {
         this.email = user.email
         this.birthDate = user.birthDate
         this.gender = (user.gender) ? user.gender.type : null
-        // this.category = user[type].category
+        this.category = user[type].category
     }
 }
 
@@ -74,6 +78,7 @@ export {
     SignInConfirmRequest,
     ProfileRequest,
     UserDTO,
+    CategoryDTO,
     Profile,
     AuthUser
 }

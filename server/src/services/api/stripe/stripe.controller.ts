@@ -5,6 +5,7 @@ import StripeService from "./stripe.service"
 import User from "../../../db/entities/user"
 import Spender from "../../../db/entities/spender"
 import StripeAccount from "../../../db/entities/stripe-account"
+import { CreateCustomerRequest } from "./stripe.dto"
 
 @JsonController("/stripe")
 export class StripeController {
@@ -15,8 +16,9 @@ export class StripeController {
     @Authorized()
     @HttpCode(201)
     @Post("/account")
-    public async createCustomerAccount(@CurrentUser({ required: true }) user: User): Promise<Spender> {
-        return await this.service.createCustomer(user.id)
+    public async createCustomerAccount(@CurrentUser({ required: true }) user: User,
+                                       request: CreateCustomerRequest): Promise<Spender> {
+        return await this.service.createCustomer(user.id, request.token)
     }
 
     @HttpCode(200)

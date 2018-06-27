@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, ManyToMany, JoinColumn, OneToOne } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, JoinColumn, OneToOne, Column } from "typeorm"
 
 import Category from "./category"
 import Job from "./job"
@@ -11,8 +11,7 @@ export default class Earner {
     @PrimaryGeneratedColumn()
     id: number
 
-    @ManyToMany((type) => Category)
-    @JoinColumn()
+    @Column((type) => Category)
     category: Category
 
     @OneToOne((type) => Job, (job) => job.earner)

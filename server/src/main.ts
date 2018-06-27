@@ -15,6 +15,7 @@ import { CategoryController } from "./services/api/category/category.controller"
 import { StripeController } from "./services/api/stripe/stripe.controller"
 import { EarnerController } from "./services/api/earner/earner.controller"
 import { SpenderController } from "./services/api/spender/spender.controller"
+import { GenderController } from "./services/api/gender/gender.controller"
 
 const runApplication = async (): Promise<void> => {
     const appControllers = [
@@ -27,7 +28,8 @@ const runApplication = async (): Promise<void> => {
       StripeController,
       SwaggerController,
       EarnerController,
-      SpenderController
+      SpenderController,
+      GenderController
     ]
     await app.connectToDatabase(dbConfig as ConnectionOptions)
     seed()

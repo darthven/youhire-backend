@@ -3065,3 +3065,15 @@ amp":"2018-06-17T20:08:36.392Z"}
 {"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-27T12:28:03.847Z"}
 {"level":"info","message":"Environment: development","timestamp":"2018-06-27T12:28:03.850Z"}
 {"level":"info","message":"Saved user {\n    \"id\": 1,\n    \"firstName\": null,\n    \"lastName\": null,\n    \"age\": null,\n    \"email\": null,\n    \"birthDate\": null,\n    \"phoneNumber\": {\n        \"id\": 1,\n        \"value\": \"+380662405263\",\n        \"createdAt\": \"2018-06-27T12:28:10.557Z\"\n    },\n    \"spender\": {\n        \"id\": 1\n    }\n}","timestamp":"2018-06-27T12:28:25.656Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-27T15:57:17.717Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-27T15:57:17.719Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-27T15:58:15.237Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-27T15:58:15.240Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-27T15:59:05.333Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-27T15:59:05.336Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-27T16:02:21.791Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-27T16:02:21.794Z"}
+{"level":"info","message":"Saved user {\n    \"id\": 1,\n    \"firstName\": null,\n    \"lastName\": null,\n    \"age\": null,\n    \"email\": null,\n    \"birthDate\": null,\n    \"phoneNumber\": {\n        \"id\": 1,\n        \"value\": \"+380662405263\",\n        \"createdAt\": \"2018-06-27T16:03:03.533Z\"\n    },\n    \"spender\": {\n        \"id\": 1\n    }\n}","timestamp":"2018-06-27T16:03:51.573Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-06-27T16:50:19.440Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-06-27T16:50:19.443Z"}
+{"level":"info","message":"Saved user {\n    \"id\": 1,\n    \"firstName\": null,\n    \"lastName\": null,\n    \"age\": null,\n    \"email\": null,\n    \"birthDate\": null,\n    \"phoneNumber\": {\n        \"id\": 1,\n        \"value\": \"+380662405263\",\n        \"createdAt\": \"2018-06-27T16:50:47.735Z\"\n    },\n    \"numbersHistory\": [\n        {\n            \"id\": 1,\n            \"value\": \"+380662405263\",\n            \"createdAt\": \"2018-06-27T16:50:47.735Z\"\n        }\n    ],\n    \"earner\": {\n        \"id\": 1\n    }\n}","timestamp":"2018-06-27T16:51:06.961Z"}
