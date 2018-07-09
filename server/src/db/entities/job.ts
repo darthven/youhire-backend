@@ -20,7 +20,9 @@ export default class Job {
     @Column()
     details: string
 
-    @Column()
+    @Column({
+        nullable: true
+    })
     addition: string
 
     @Column()
@@ -29,10 +31,14 @@ export default class Job {
     @OneToOne((type) => Category)
     category: Category
 
-    @OneToOne((type) => Earner, (earner) => earner.job)
+    @OneToOne((type) => Earner, (earner) => earner.job, {
+        cascade: true
+    })
     earner: Earner
 
-    @OneToOne((type) => Spender, (spender) => spender.job)
+    @OneToOne((type) => Spender, (spender) => spender.job, {
+        cascade: true
+    })
     spender: Spender
 
 }

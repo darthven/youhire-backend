@@ -1,4 +1,4 @@
-import { JsonController, Authorized, HttpCode, Get, CurrentUser, QueryParam } from "routing-controllers"
+import { JsonController, Authorized, HttpCode, CurrentUser, Post, Body, Get } from "routing-controllers"
 import { Inject } from "typedi"
 
 import { AuthUser } from "../auth/auth.dto"
@@ -13,9 +13,17 @@ export default class JobController {
     private jobService: JobService
 
     @Authorized()
+    @HttpCode(200)
+    @Get()
+    public async getAllJobsByCurrentUser(@CurrentUser({required: true}) user: AuthUser): Promise<Job[]> {
+       return await this.jobService.findAllJobsByCurrentUser(user)
+    }
+
+    @Authorized()
     @HttpCode(201)
-    @Get("/job/create")
-    public async createJob(@CurrentUser({required: true}) user: AuthUser, request: CreateJobRequest): Promise<Job> {
-       return await this.jobService.createJob(request)
+    @Post("/create")
+    public async createJob(@CurrentUser({required: true}) user: AuthUser,
+                           @Body() request: CreateJobRequest): Promise<Job> {
+       return await this.jobService.createJob(request, user)
     }
 }
