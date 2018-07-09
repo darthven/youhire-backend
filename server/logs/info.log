@@ -3255,3 +3255,11 @@ amp":"2018-06-17T20:08:36.392Z"}
 {"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-07-09T15:58:42.641Z"}
 {"level":"info","message":"Environment: development","timestamp":"2018-07-09T15:58:42.643Z"}
 {"level":"info","message":"Saved user {\n    \"id\": 1,\n    \"firstName\": null,\n    \"lastName\": null,\n    \"age\": null,\n    \"email\": null,\n    \"birthDate\": null,\n    \"phoneNumber\": {\n        \"id\": 1,\n        \"value\": \"+380662405263\",\n        \"createdAt\": \"2018-07-09T15:58:45.573Z\"\n    },\n    \"spender\": {\n        \"id\": 1\n    },\n    \"numbersHistory\": []\n}","timestamp":"2018-07-09T15:59:03.113Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-07-09T16:08:30.159Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-07-09T16:08:30.161Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-07-09T16:16:58.065Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-07-09T16:16:58.067Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-07-09T16:20:37.087Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-07-09T16:20:37.090Z"}
+{"level":"info","message":"HTTP Server listening on port: 80","timestamp":"2018-07-09T16:21:23.665Z"}
+{"level":"info","message":"Environment: development","timestamp":"2018-07-09T16:21:23.668Z"}

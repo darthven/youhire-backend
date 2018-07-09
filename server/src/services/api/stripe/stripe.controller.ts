@@ -1,4 +1,4 @@
-import { JsonController, HttpCode, Post, Authorized, CurrentUser, Get } from "routing-controllers"
+import { JsonController, HttpCode, Post, Authorized, CurrentUser, Get, Body } from "routing-controllers"
 import { Inject } from "typedi"
 
 import StripeService from "./stripe.service"
@@ -17,7 +17,7 @@ export class StripeController {
     @HttpCode(201)
     @Post("/account")
     public async createCustomerAccount(@CurrentUser({ required: true }) user: User,
-                                       request: CreateCustomerRequest): Promise<Spender> {
+                                       @Body() request: CreateCustomerRequest): Promise<Spender> {
         return await this.service.createCustomer(user.id, request.token)
     }
 
