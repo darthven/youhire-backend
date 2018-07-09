@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, Tree, TreeParent, TreeChildren } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, Tree, TreeParent, TreeChildren, AfterLoad } from "typeorm"
 
 @Entity({
     name: "categories"
@@ -13,19 +13,25 @@ export default class Category {
     name: string
 
     @Column({
-        nullable: true
+        nullable: true,
+        type: "float"
     })
-    certificate: string
+    minPrice: number
 
     @Column({
         nullable: true,
         type: "float"
     })
-    price: number
+    maxPrice: number
 
     @TreeParent()
     parentCategory: Category
 
     @TreeChildren()
     subcategories: Category[]
+
+    certificate?: string
+
+    selected: boolean = false
+
 }

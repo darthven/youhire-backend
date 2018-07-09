@@ -1,37 +1,25 @@
 import { Service } from "typedi"
-import * as geocoder from "node-geocoder"
 
-import envConfig from "../../../config/env.config"
-import { JobLocation } from "./job.dto"
+import { InjectRepository } from "typeorm-typedi-extensions"
+import { CreateJobRequest } from "./job.dto"
+import Job from "../../../db/entities/job"
+import JobRepository from "./job.repository"
 
 @Service()
 export default class JobService {
 
-    private readonly geocoderOptions: geocoder.Options = {
-        provider: "google",
-        httpAdapter: "https",
-        apiKey: envConfig.GOOGLE_MAPS_API_KEY
+    @InjectRepository()
+    private repository: JobRepository
+
+    public async createJob(request: CreateJobRequest): Promise<Job> {
+        const job = new Job()
+        job.spender = request.spender
+        job.category = request.category
+        job.address = request.location
+        job.details = request.details
+        job.percentageActivity = 0
+        job.status = false
+        return await this.repository.save(job)
     }
 
-    public async getAddressByCoordinates(location: geocoder.Location): Promise<JobLocation> {
-        const entry: geocoder.Entry = (await geocoder(this.geocoderOptions).reverse(location)).shift()
-        return this.extractLocationFromEntry(entry)
-    }
-
-    public async getAddressesByName(locationName: string): Promise<JobLocation[]> {
-        return (await geocoder(this.geocoderOptions).geocode(locationName)).map((entry) => {
-            return this.extractLocationFromEntry(entry)
-        })
-    }
-
-    private extractLocationFromEntry(entry: geocoder.Entry): JobLocation {
-        return {
-            streetNumber: entry.streetNumber,
-            streetName: entry.streetName,
-            city: entry.city,
-            district: entry.administrativeLevels.level2long,
-            country: entry.country,
-            zipcode: entry.zipcode
-        }
-    }
 }

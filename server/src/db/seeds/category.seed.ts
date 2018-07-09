@@ -4,8 +4,9 @@ import { getManager, TreeRepository } from "typeorm"
 import Category from "../entities/category"
 
 interface CategoryNode {
-    name: string,
-    price?: number,
+    name: string
+    minPrice?: number
+    maxPrice?: number
     certificate?: string
 }
 
@@ -21,31 +22,31 @@ const CLEANING: Tree<CategoryNode> = {
     children: [
         {
             name: "Farm",
-            price: 234.2
+            minPrice: 234.2
         },
         {
             name: "Gutter cleaning",
-            price: 123.5
+            minPrice: 123.5
         },
         {
             name: "Home",
-            price: 434.2
+            minPrice: 434.2
         },
         {
             name: "Office",
-            price: 56.23
+            minPrice: 56.23
         },
         {
             name: "Pool",
-            price: 78.54
+            minPrice: 78.54
         },
         {
             name: "Window washing",
-            price: 34.8
+            minPrice: 34.8
         },
         {
             name: "Yard",
-            price: 234.2
+            minPrice: 234.2
         }
     ]
 }
@@ -57,15 +58,15 @@ const GENERAL_HELP: Tree<CategoryNode> = {
     children: [
         {
             name: "General Worker",
-            price: 234.2
+            minPrice: 234.2
         },
         {
             name: "Packing and Unpacking service",
-            price: 123.5
+            minPrice: 123.5
         },
         {
             name: "Professional Organizer",
-            price: 434.2
+            minPrice: 434.2
         }
     ]
 }
@@ -77,19 +78,19 @@ const HANDYMAN: Tree<CategoryNode> = {
     children: [
         {
             name: "Electrician",
-            price: 234.2
+            minPrice: 234.2
         },
         {
             name: "Furniture Assembler",
-            price: 123.5
+            minPrice: 123.5
         },
         {
             name: "Graffiti removal",
-            price: 434.2
+            minPrice: 434.2
         },
         {
             name: "Plumber",
-            price: 56.23
+            minPrice: 56.23
         }
     ]
 }
@@ -101,15 +102,15 @@ const PETS: Tree<CategoryNode> = {
     children: [
         {
             name: "Dog Walker",
-            price: 234.2
+            minPrice: 234.2
         },
         {
             name: "Pet grooming",
-            price: 123.5
+            minPrice: 123.5
         },
         {
             name: "Pet sitting",
-            price: 434.2
+            minPrice: 434.2
         }
     ]
 }
@@ -121,11 +122,11 @@ const SECURITY: Tree<CategoryNode> = {
     children: [
         {
             name: "Locksmith",
-            price: 234.2
+            minPrice: 234.2
         },
         {
             name: "Security Guard",
-            price: 123.5
+            minPrice: 123.5
         }
     ]
 }
@@ -137,7 +138,7 @@ const TRANSPORT_SERVICES: Tree<CategoryNode> = {
     children: [
         {
             name: "Transport Towing",
-            price: 234.2
+            minPrice: 234.2
         }
     ]
 }
@@ -149,23 +150,23 @@ const WELLNESS_BEAUTY: Tree<CategoryNode> = {
     children: [
         {
             name: "Hairdresser",
-            price: 234.2
+            minPrice: 234.2
         },
         {
             name: "Make-Up artist",
-            price: 123.5
+            minPrice: 123.5
         },
         {
             name: "Manicure / Pedicure Specialist",
-            price: 434.2
+            minPrice: 434.2
         },
         {
             name: "Marijuana delivery",
-            price: 56.23
+            minPrice: 56.23
         },
         {
             name: "Massage Therapist",
-            price: 234.2
+            minPrice: 234.2
         }
     ]
 }
@@ -181,7 +182,8 @@ const seedCategory = async (categoryTree: Tree<CategoryNode>, repository: TreeRe
     children.forEach(async (child) => {
         const subCategory = new Category()
         subCategory.name = child.name
-        subCategory.price = child.price
+        subCategory.minPrice = child.minPrice
+        subCategory.maxPrice = child.maxPrice
         subCategory.certificate = child.certificate
         subCategory.parentCategory = savedCategory
         await repository.save(subCategory)

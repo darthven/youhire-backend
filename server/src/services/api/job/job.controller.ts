@@ -3,6 +3,8 @@ import { Inject } from "typedi"
 
 import { AuthUser } from "../auth/auth.dto"
 import JobService from "./job.service"
+import { CreateJobRequest } from "./job.dto"
+import Job from "../../../db/entities/job"
 
 @JsonController("/api/user/job")
 export default class JobController {
@@ -11,18 +13,9 @@ export default class JobController {
     private jobService: JobService
 
     @Authorized()
-    @HttpCode(200)
-    @Get("/location")
-    public async getProfile(@CurrentUser({required: true}) user: AuthUser,
-                            @QueryParam("lat") lat: number, @QueryParam("lon") lon: number) {
-       return await this.jobService.getAddressByCoordinates({ lat, lon })
-    }
-
-    @Authorized()
-    @HttpCode(200)
-    @Get("/location/search")
-    public async getLocationList(@CurrentUser({required: true}) user: AuthUser,
-                                 @QueryParam("name") name: string) {
-       return await this.jobService.getAddressesByName(name)
+    @HttpCode(201)
+    @Get("/job/create")
+    public async createJob(@CurrentUser({required: true}) user: AuthUser, request: CreateJobRequest): Promise<Job> {
+       return await this.jobService.createJob(request)
     }
 }

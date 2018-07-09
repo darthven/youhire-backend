@@ -1,10 +1,7 @@
 import { Service, Inject } from "typedi"
 import { InjectRepository } from "typeorm-typedi-extensions"
-import { Context } from "koa"
-import * as jwt from "jsonwebtoken"
 
 import logger from "../../../config/winston.user"
-import env from "../../../config/env.config"
 import { SignInConfirmRequest, SignInRequest, Profile, UserDTO,
         ProfileRequest, AuthUser, CategoryDTO } from "./auth.dto"
 import Code from "../../../db/entities/code"
@@ -92,15 +89,17 @@ export default class AuthService {
     }
 
     public async fillUser(profileRequest: ProfileRequest, currentUser: AuthUser): Promise<UserDTO> {
-        const user: User = await this.userRepository.findUserByIdAndPhoneNumber(currentUser.id)
+        const user: User = await this.userRepository
+            .findUserByIdAndPhoneNumberAndType(currentUser.id, currentUser.type as UserType)
         if (currentUser.type === UserType.EARNER) {
             return new UserDTO(await this.fillUserAsEarner(currentUser.id, profileRequest), currentUser.type)
         }
         return new UserDTO(await this.fillUserAsSpender(currentUser.id, profileRequest), currentUser.type)
     }
 
-    public async getUserProfile(currentUser: AuthUser) {
-        const userData: User = await this.userRepository.findUserByIdAndPhoneNumber(currentUser.id)
+    public async getUserProfile(currentUser: AuthUser): Promise<UserDTO> {
+        const userData: User = await this.userRepository
+            .findUserByIdAndPhoneNumberAndType(currentUser.id, currentUser.type as UserType)
         return new UserDTO(userData, currentUser.type)
     }
 
@@ -113,7 +112,7 @@ export default class AuthService {
 
     private async saveVerificationCode(phoneNumber: PhoneNumber): Promise<Code> {
         const code = new Code()
-        code.value = this.generateCode(7)
+        code.value = this.generateCode(6)
         code.createdAt = new Date().toISOString()
         code.phoneNumber = phoneNumber
         return await this.codeRepository.save(code)
@@ -138,6 +137,7 @@ export default class AuthService {
         const userData: User = await this.userRepository.findUserAsEarnerById(user.id)
         if (userData && !userData.earner) {
             userData.earner = new Earner()
+            userData.earner.categories = await this.categoryRepository.findAllCategoriesWithSubcategories()
             const savedUser: User = await this.userRepository.save(userData)
             logger.info("Saved user", JSON.stringify(savedUser, null, 4))
             return {
@@ -208,13 +208,7 @@ export default class AuthService {
         user.age = profileRequest.age
         user.birthDate = profileRequest.birthDate
         if (profileRequest.category && user.earner) {
-            const category: Category = (await this.categoryRepository.findTrees())
-                .find((cat) => cat.name === profileRequest.category.name)
-            const subcategoriesNames: string[] = profileRequest.category.subcategories.map((s) => s.name)
-            category.subcategories = category.subcategories.filter((subCat) => {
-                return subcategoriesNames.includes(subCat.name)
-            })
-            user.earner.category = category
+            user.earner = await this.handleCategories(profileRequest.category, user.earner)
         }
         return this.updatePhoneNumber(user, profileRequest.phoneNumber)
     }
@@ -241,5 +235,32 @@ export default class AuthService {
         const user: User = await this.userRepository.findUserAsSpenderById(userId)
         this.fillUserGeneralData(user, profileRequest)
         return this.userRepository.save(user)
+    }
+
+    private async handleCategories(categoryDTO: CategoryDTO, earner: Earner): Promise<Earner> {
+        const category: Category = (await this.categoryRepository.findRoots())
+            .find((cat) => cat.name === categoryDTO.name)
+        category.subcategories = (await this.categoryRepository.findDescendants(category))
+            .filter((cat) => categoryDTO.subcategories.map((subCat) => subCat.name).includes(cat.name))
+        if (earner.categories.length > 0) {
+            earner.categories = earner.categories.map((cat) => this.selectCategory(cat, false))
+        }
+        earner.categories = [this.selectCategory(category, true)]
+        return earner
+    }
+
+    private selectCategory(category: Category, status: boolean): Category {
+        const selectedCategory: Category = category
+        const subcategories: Category[] = selectedCategory.subcategories
+        selectedCategory.selected = status
+        if (subcategories) {
+            selectedCategory.subcategories = subcategories.map((subCategory) => {
+                return {
+                    ...subCategory,
+                    selected: status
+                }
+            })
+        }
+        return selectedCategory
     }
 }

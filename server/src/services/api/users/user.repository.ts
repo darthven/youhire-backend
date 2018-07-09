@@ -5,7 +5,6 @@ import { Repository, EntityRepository } from "typeorm"
 import User from "../../../db/entities/user"
 import PhoneNumber from "../../../db/entities/phone-number"
 import { UserType } from "../../../common"
-import Earner from "../../../db/entities/earner"
 
 @Service()
 @EntityRepository(User)
@@ -15,8 +14,8 @@ export default class UserRepository extends Repository<User> {
         return await this.find({ relations: ["phoneNumber", "numbersHistory", "gender"]})
     }
 
-    public async findUserByIdAndPhoneNumber(userId: number): Promise<User> {
-        return (await this.find({ relations: ["phoneNumber", "numbersHistory"]}))
+    public async findUserByIdAndPhoneNumberAndType(userId: number, userType: UserType): Promise<User> {
+        return (await this.find({ relations: ["phoneNumber", "numbersHistory", userType]}))
             .find((data) => data.id === userId)
     }
 

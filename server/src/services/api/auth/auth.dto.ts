@@ -1,4 +1,5 @@
 import User from "../../../db/entities/user"
+import Category from "../../../db/entities/category"
 
 interface SignInRequest {
     phoneNumber: string
@@ -32,9 +33,22 @@ interface AuthUser {
     type: string
 }
 
-interface CategoryDTO {
+class CategoryDTO {
     name: string
+    selected: boolean
+    certificate: string
     subcategories?: CategoryDTO[]
+
+    constructor(category?: Category) {
+        if (category) {
+            this.name = category.name
+            this.selected = category.selected
+            this.certificate = category.certificate
+            if (category.subcategories) {
+                this.subcategories = category.subcategories.map((subCat) => new CategoryDTO(subCat))
+            }
+        }
+    }
 }
 
 class UserDTO  {
@@ -57,7 +71,7 @@ class UserDTO  {
 
     gender: string
 
-    category: CategoryDTO
+    categories: CategoryDTO[]
 
     constructor(user: User, type: string) {
         this.id = user.id
@@ -69,7 +83,9 @@ class UserDTO  {
         this.email = user.email
         this.birthDate = user.birthDate
         this.gender = (user.gender) ? user.gender.type : null
-        this.category = user[type].category
+        if (user[type].categories) {
+            this.categories = user[type].categories.map((cat) => new CategoryDTO(cat))
+        }
     }
 }
 

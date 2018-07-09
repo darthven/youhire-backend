@@ -1,4 +1,5 @@
-import { Param, Body, Get, Post, Put, JsonController, HttpCode, Authorized, CurrentUser } from "routing-controllers"
+import { Param, Body, Get, Post, Put, JsonController, HttpCode,
+    Authorized, CurrentUser, HeaderParam } from "routing-controllers"
 import { Inject } from "typedi"
 
 import AuthService from "./auth.service"
@@ -12,7 +13,7 @@ export class AuthController {
 
     @HttpCode(201)
     @Post("/send")
-    public async sendMessage(@Body() request: SignInRequest) {
+    public async sendMessage(@Body() request: SignInRequest, @HeaderParam("Accept-Language") locale) {
         return await this.authService.send(request)
     }
 

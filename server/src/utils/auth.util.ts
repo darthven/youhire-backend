@@ -16,7 +16,7 @@ export default class AuthUtil {
     public static generateVerificationCode(length: number): string {
        return random.generate({
            length,
-           charset: "alphanumeric"
+           charset: "numeric"
        })
     }
  }

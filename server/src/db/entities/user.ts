@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, OneToOne, JoinColumn, OneToMany } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable,
+    OneToOne, JoinColumn, OneToMany, AfterLoad } from "typeorm"
 import { IsInt, IsEmail, IsDate, Min, Max, MinLength, MaxLength,
     IsString, IsAlpha, IsNotEmpty, IsDateString, IsMobilePhone, IsNumberString, IsArray, IsEmpty} from "class-validator"
 
@@ -77,5 +78,12 @@ export default class User {
     })
     @JoinColumn()
     spender: Spender
+
+    @AfterLoad()
+    initNumbersHistory() {
+        if (!this.numbersHistory) {
+            this.numbersHistory = []
+        }
+    }
 
 }
