@@ -5,6 +5,9 @@ import { Inject } from "typedi"
 import User from "../../../db/entities/user"
 import UserService from "./user.service"
 
+/**
+ * TODO remove before release
+ */
 @JsonController("/users")
 export class UserController {
 

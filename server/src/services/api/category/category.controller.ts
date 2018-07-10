@@ -10,6 +10,9 @@ export class CategoryController {
     @Inject()
     private service: CategoryService
 
+    /**
+     * TODO remove before release
+     */
     @HttpCode(200)
     @Get()
     public async getAllCategories(): Promise<Category[]> {

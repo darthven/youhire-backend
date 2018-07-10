@@ -12,6 +12,9 @@ export default class JobController {
     @Inject()
     private jobService: JobService
 
+    /**
+     * TODO remove before release
+     */
     @Authorized()
     @HttpCode(200)
     @Get()

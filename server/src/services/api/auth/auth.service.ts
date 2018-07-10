@@ -88,6 +88,35 @@ export default class AuthService {
         }
     }
 
+    public async sendTest(): Promise<{ message: string }> {
+        const formattedNumber: string = await this.smsService.formatNumber("+380999999999")
+        const savedNumber: PhoneNumber =  await this.phoneNumberRepository.findOne({ value: formattedNumber})
+                                    || await this.savePhoneNumber(formattedNumber)
+        const savedCode: Code = await this.saveVerificationCodeTest(savedNumber)
+        return {
+            message: "SMS was sent successfully"
+        }
+    }
+
+    public async confirmTest(userType: string): Promise<Profile> {
+        const formattedNumber: string = await this.smsService.formatNumber("+380999999999")
+        const phoneNumber: PhoneNumber = await this.phoneNumberRepository.findOne({ value: formattedNumber })
+        if (!phoneNumber) {
+            throw new PhoneNumberNotFoundError()
+        }
+        const code: Code = await this.codeRepository.findOne({ value: "000000" })
+        if (!code) {
+            throw new InvalidVerificationCodeError()
+        }
+        if (userType === UserType.EARNER) {
+            return await this.confirmEarner(phoneNumber, code)
+        } else if (userType === UserType.SPENDER) {
+            return await this.confirmSpender(phoneNumber, code)
+        } else {
+            throw new RoleNotFoundError(userType)
+        }
+    }
+
     public async fillUser(profileRequest: ProfileRequest, currentUser: AuthUser): Promise<UserDTO> {
         const user: User = await this.userRepository
             .findUserByIdAndPhoneNumberAndType(currentUser.id, currentUser.type as UserType)
@@ -112,14 +141,18 @@ export default class AuthService {
 
     private async saveVerificationCode(phoneNumber: PhoneNumber): Promise<Code> {
         const code = new Code()
-        code.value = this.generateCode(6)
+        code.value = AuthUtil.generateVerificationCode()
         code.createdAt = new Date().toISOString()
         code.phoneNumber = phoneNumber
         return await this.codeRepository.save(code)
     }
 
-    private generateCode(length: number): string {
-        return AuthUtil.generateVerificationCode(length)
+    private async saveVerificationCodeTest(phoneNumber: PhoneNumber): Promise<Code> {
+        const code = new Code()
+        code.value = "000000"
+        code.createdAt = new Date().toISOString()
+        code.phoneNumber = phoneNumber
+        return await this.codeRepository.save(code)
     }
 
     private async createUserWithoutRole(phoneNumber: PhoneNumber): Promise<User> {

@@ -10,6 +10,9 @@ export class EarnerController {
     @Inject()
     private service: EarnerService
 
+    /**
+     * TODO remove before release
+     */
     @HttpCode(200)
     @Get()
     public async getAllEarners(): Promise<Earner[]> {

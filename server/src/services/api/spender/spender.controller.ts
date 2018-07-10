@@ -10,6 +10,9 @@ export class SpenderController {
     @Inject()
     private service: SpenderService
 
+    /**
+     * TODO remove before release
+     */
     @HttpCode(200)
     @Get()
     public async getAllEarners(): Promise<Spender[]> {

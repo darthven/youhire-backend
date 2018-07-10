@@ -21,6 +21,9 @@ export class StripeController {
         return await this.service.createCustomer(user.id, request.token)
     }
 
+    /**
+     * TODO remove before release
+     */
     @HttpCode(200)
     @Get("/account")
     public async getAllAccounts(): Promise<StripeAccount[]> {

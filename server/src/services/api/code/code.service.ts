@@ -8,6 +8,9 @@ export default class CodeService {
     @InjectRepository()
     private repository: CodeRepository
 
+    /**
+     * TODO remove before release
+     */
     public async getAllCodesWithPhoneNumber() {
         return this.repository.getCodesByPhoneNumber()
     }

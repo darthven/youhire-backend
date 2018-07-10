@@ -10,6 +10,9 @@ export class GenderController {
     @Inject()
     private service: GenderService
 
+    /**
+     * TODO remove before release
+     */
     @HttpCode(200)
     @Get()
     public async getAllGenders(): Promise<Gender[]> {

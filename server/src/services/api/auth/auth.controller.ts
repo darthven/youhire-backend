@@ -1,5 +1,5 @@
 import { Param, Body, Get, Post, Put, JsonController, HttpCode,
-    Authorized, CurrentUser, HeaderParam } from "routing-controllers"
+    Authorized, CurrentUser } from "routing-controllers"
 import { Inject } from "typedi"
 
 import AuthService from "./auth.service"
@@ -13,7 +13,7 @@ export class AuthController {
 
     @HttpCode(201)
     @Post("/send")
-    public async sendMessage(@Body() request: SignInRequest, @HeaderParam("Accept-Language") locale) {
+    public async sendMessage(@Body() request: SignInRequest) {
         return await this.authService.send(request)
     }
 
@@ -22,6 +22,18 @@ export class AuthController {
     public async verifyConfirmationCode(@Param("type") userType: string,
                                         @Body() request: SignInConfirmRequest) {
         return await this.authService.confirm(request, userType)
+    }
+
+    @HttpCode(201)
+    @Post("/send/test")
+    public async sendMessageTest() {
+        return await this.authService.sendTest()
+    }
+
+    @HttpCode(201)
+    @Post("/auth/test/:type")
+    public async verifyConfirmationCodeTest(@Param("type") userType: string) {
+        return await this.authService.confirmTest(userType)
     }
 
     @Authorized()

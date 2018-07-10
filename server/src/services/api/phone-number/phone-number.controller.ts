@@ -10,6 +10,9 @@ export class PhoneNumberController {
     @Inject()
     private service: PhoneNumberService
 
+    /**
+     * TODO remove before release
+     */
     @HttpCode(200)
     @Get()
     public async getAllPhoneNumbers(): Promise<PhoneNumber[]> {

@@ -1,3 +1,7 @@
+import envConfig from "./env.config"
+
+const appDir: string = (envConfig.NODE_ENV === "development") ? "src" : "dist"
+
 export default {
     type: "postgres",
     host: process.env.PG_HOST || "localhost",
@@ -8,17 +12,17 @@ export default {
     synchronize: true,
     logging: false,
     entities: [
-        "src/db/entities/*.ts"
+        `${appDir}/db/entities/*.js`
     ],
     migrations: [
-        "src/db/migrations/*.ts"
+        `${appDir}/db/migrations/*.js`
     ],
     subscribers: [
-        "src/db/subscribers/*.ts"
+        `${appDir}/db/subscribers/*.js`
     ],
     cli: {
-        entitiesDir: "src/db/entities",
-        migrationsDir: "src/db/migrations",
-        subscribersDir: "src/db/subscribers"
+        entitiesDir: `${appDir}/db/entities`,
+        migrationsDir: `${appDir}/db/migrations`,
+        subscribersDir: `${appDir}/db/subscribers`
     }
 }

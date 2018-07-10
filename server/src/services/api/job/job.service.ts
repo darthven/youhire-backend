@@ -31,6 +31,9 @@ export default class JobService {
         return await this.jobRepository.save(job)
     }
 
+    /**
+     * TODO remove before release
+     */
     public async findAllJobsByCurrentUser(user: AuthUser): Promise<Job[]> {
       return await this.jobRepository.findAllJobsByCurrentUser(user.id)
     }

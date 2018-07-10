@@ -25,6 +25,9 @@ export default class StripeService {
 
     private readonly stripeAPI = new Stripe(envConfig.STRIPE_API_KEY)
 
+    /**
+     * TODO remove before release
+     */
     public async findAllAccounts(): Promise<StripeAccount[]> {
         return await this.stripeRepository.find()
     }

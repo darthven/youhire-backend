@@ -10,6 +10,9 @@ export default class SpenderService {
     @InjectRepository()
     private repository: SpenderRepository
 
+    /**
+     * TODO remove before release
+     */
     public async findAllSpenders(): Promise<Spender[]> {
         return await this.repository.find()
     }

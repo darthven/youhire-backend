@@ -13,10 +13,10 @@ export default class AuthUtil {
         return jwt.decode(token)
     }
 
-    public static generateVerificationCode(length: number): string {
-       return random.generate({
-           length,
+    public static generateVerificationCode(): string {
+        return env.SMS_TEXT.replace(new RegExp("{{[\\s]*code[\\s]*}}", "g"), random.generate({
+           length: env.CODE_LEN as number,
            charset: "numeric"
-       })
+        }))
     }
  }

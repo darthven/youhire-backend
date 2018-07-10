@@ -10,6 +10,9 @@ export default class EarnerService {
     @InjectRepository()
     private repository: EarnerRepository
 
+    /**
+     * TODO remove before release
+     */
     public async findAllEarners(): Promise<Earner[]> {
         return await this.repository.find()
     }

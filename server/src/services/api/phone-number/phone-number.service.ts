@@ -10,6 +10,9 @@ export default class PhoneNumberService {
     @InjectRepository()
     private repository: PhoneNumberRepository
 
+    /**
+     * TODO remove before release
+     */
     public async getAllPhoneNumbers(): Promise<PhoneNumber[]> {
         return await this.repository.getPhoneNumbersByUserAndCodes()
     }

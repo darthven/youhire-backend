@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, Tree, TreeParent, TreeChildren, AfterLoad } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, Tree, TreeParent, TreeChildren } from "typeorm"
 
 @Entity({
     name: "categories"
